@@ -1,0 +1,25 @@
+docker build -t shamsiddinpy:latest
+docker run --name shamsiddin_container -p 8000:8000 shamsiddinpy:latest
+docker tag shamsiddinpy:latest shamsiddinpy/shamsiddinpy:latest
+docker push
+
+docker compose up
+docker compose up --build
+docker compose down
+
+
+docker va docker  compose ichidan migrate va migrations qilish
+
+docker exec -it a9 python3 manage.py migrate
+docker compose run backend_service python3 manage.py migrate
+
+docker ichidan database va table yaratish
+
+docker exec -itu postgres 2f psql -c 'create database drf_db';
+docker exec -itu postgres 2f psql -d drf_db -c 'create table student();'
+
+MINIO
+pip3 install django-storages
+pip3 install boto3
+
+docker run -p 9000:9000 -p 9001:9001 minio/minio server /data --console-address ":9001"

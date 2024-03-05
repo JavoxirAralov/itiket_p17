@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  backend_service:
+    build: .
+    env_file: .env
+    depends_on:
+      - postgres_service
+    ports:
+      - '8000:8000'
+
+  postgres_service:
+    image: postgres:alpine
+    ports:
+      - '5432:5432'
+    env_file: .env
+    volumes:
+      - pg_data_service:/var/lib/postgresql/data
+
+  minio_service:
+    image: minio/minio
+    container_name: minio_container
+    ports:
+      - '9000:9000'
+      - '9001:9001'
+    volumes:
+      - minio_storage:/data
+    env_file: .env
+    command: server --console-address ":9001" /data
+
+volumes:
+  minio_storage:
+  pg_data_service:
