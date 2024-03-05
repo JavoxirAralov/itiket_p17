@@ -1,6 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db.models import Model, DateTimeField, CharField, EmailField, ForeignKey, CASCADE, TextField, IntegerField, \
-    BooleanField, DateField, BigIntegerField, ManyToManyField, PositiveIntegerField, DecimalField
+    BooleanField, ManyToManyField, PositiveIntegerField, DecimalField
 from django_ckeditor_5.fields import CKEditor5Field
 from django_resized import ResizedImageField
 

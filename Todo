@@ -23,3 +23,6 @@ pip3 install django-storages
 pip3 install boto3
 
 docker run -p 9000:9000 -p 9001:9001 minio/minio server /data --console-address ":9001"
+
+            --------Fixture---------
+MakeFile da loadata bor  u togridan togri databaseni  malumotlar bilan toldiriberadi
