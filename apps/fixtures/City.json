@@ -1,0 +1,98 @@
+[
+  {
+    "model": "apps.city",
+    "pk": 1,
+    "fields": {
+      "name": "Tashkent",
+      "country": 233
+    }
+  },
+  {
+    "model": "apps.city",
+    "pk": 2,
+    "fields": {
+      "name": "Nukus",
+      "country": 233
+    }
+  },
+  {
+    "model": "apps.city",
+    "pk": 3,
+    "fields": {
+      "name": "Buxoro",
+      "country": 233
+    }
+  },
+  {
+    "model": "apps.city",
+    "pk": 4,
+    "fields": {
+      "name": "Samarqand",
+      "country": 233
+    }
+  },
+  {
+    "model": "apps.city",
+    "pk": 5,
+    "fields": {
+      "name": "Termiz",
+      "country": 233
+    }
+  },
+  {
+    "model": "apps.city",
+    "pk": 6,
+    "fields": {
+      "name": "Qarshi",
+      "country": 233
+    }
+  },
+  {
+    "model": "apps.city",
+    "pk": 7,
+    "fields": {
+      "name": "Shaxrisabiz",
+      "country": 233
+    }
+  },
+  {
+    "model": "apps.city",
+    "pk": 8,
+    "fields": {
+      "name": "Andijon",
+      "country": 233
+    }
+  },
+  {
+    "model": "apps.city",
+    "pk": 9,
+    "fields": {
+      "name": "Namangan",
+      "country": 233
+    }
+  },
+  {
+    "model": "apps.city",
+    "pk": 10,
+    "fields": {
+      "name": "Fargona",
+      "country": 233
+    }
+  },
+  {
+    "model": "apps.city",
+    "pk": 11,
+    "fields": {
+      "name": "Urganch",
+      "country": 233
+    }
+  },
+  {
+    "model": "apps.city",
+    "pk": 12,
+    "fields": {
+      "name": "Guluston",
+      "country": 233
+    }
+  }
+]

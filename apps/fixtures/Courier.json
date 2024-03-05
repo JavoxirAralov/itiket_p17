@@ -1,0 +1,72 @@
+[
+  {
+    "model": "apps.Courier",
+    "pk": 1,
+    "fields": {
+      "title": "ajoyib",
+      "description": "ajoyib musiqalar bilan siz hardohiym buz bilan  olamida boling ",
+      "street": "majnuntol-5",
+      "building": "dom 5 etaj",
+      "house_number": "a-34",
+      "index": "a334523",
+      "city": 3,
+      "country": 3
+    }
+  },
+    {
+    "model": "apps.Courier",
+    "pk": 2,
+    "fields": {
+      "title": "ajoyib",
+      "description": "ajoyib musiqalar bilan siz hardohiym buz bilan  olamida boling ",
+      "street": "majnuntol-5",
+      "building": "dom 6 etaj",
+      "house_number": "a-34",
+      "index": "a334523",
+      "city": 3,
+      "country": 3
+    }
+  },
+    {
+    "model": "apps.Courier",
+    "pk": 3,
+    "fields": {
+      "title": "ajoyib",
+      "description": "ajoyib musiqalar bilan siz hardohiym buz bilan  olamida boling ",
+      "street": "majnuntol-5",
+      "building": "dom 5 etaj",
+      "house_number": "a-34",
+      "index": "a334523",
+      "city": 3,
+      "country": 3
+    }
+  },
+    {
+    "model": "apps.Courier",
+    "pk": 4,
+    "fields": {
+      "title": "ajoyib",
+      "description": "ajoyib musiqalar bilan siz hardohiym buz bilan  olamida boling ",
+      "street": "majnuntol-5",
+      "building": "dom 5 etaj",
+      "house_number": "a-34",
+      "index": "a334523",
+      "city": 3,
+      "country": 3
+    }
+  },
+    {
+    "model": "apps.Courier",
+    "pk": 5,
+    "fields": {
+      "title": "ajoyib",
+      "description": "ajoyib musiqalar bilan siz hardohiym buz bilan  olamida boling ",
+      "street": "majnuntol-5",
+      "building": "dom 5 etaj",
+      "house_number": "a-34",
+      "index": "a334523",
+      "city": 3,
+      "country": 3
+    }
+  }
+]

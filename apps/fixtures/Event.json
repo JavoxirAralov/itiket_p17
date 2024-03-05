@@ -1,0 +1,151 @@
+[
+  {
+    "model": "apps.event",
+    "pk": 1,
+    "fields": {
+      "description": "ajoyib musiqalar faqat siz bilan birga ",
+      "venue": 1,
+      "start_date": "2024-03-01T09:00:00Z",
+      "end_date": "2024-03-10T18:30:00Z",
+      "image": "event/event_default/default.jpeg",
+      "price": 150000,
+      "title": "Shoxruhon",
+      "city": 1,
+      "category": 1
+    }
+  },
+  {
+    "model": "apps.event",
+    "fields": {
+      "description": "cool ashulalar toplamidan joy olgan musqialar siz bilan birg",
+      "venue": 4,
+      "start_date": "2024-02-01T09:00:00Z",
+      "end_date": "2024-05-10T18:30:00Z",
+      "image": "event/event_default/default.jpeg",
+      "price": 150000,
+      "title": "Shxz",
+      "city": 3,
+      "category": 4
+    }
+  },
+  {
+    "model": "apps.event",
+    "pk": 3,
+    "fields": {
+      "description": "the best siger is comi",
+      "venue": 1,
+      "start_date": "2024-04-01T09:00:00Z",
+      "end_date": "2024-05-10T18:30:00Z",
+      "image": "event/event_default/default.jpeg",
+      "price": 150000,
+      "title": "Shxzoda matjonova ",
+      "city": 5,
+      "category": 4
+    }
+  },
+  {
+    "model": "apps.event",
+    "pk": 4,
+    "fields": {
+      "description": "ajoyib musiqalar bilan siz hardohiym buz bilan  olamida bolin",
+      "venue": 3,
+      "start_date": "2024-03-01T09:00:00Z",
+      "end_date": "2024-03-10T18:30:00Z",
+      "image": "event/event_default/default.jpeg",
+      "price": 150000,
+      "title": "Jony",
+      "city": 3,
+      "category": 3
+    }
+  },
+  {
+    "model": "apps.event",
+    "pk": 5,
+    "fields": {
+      "description": "ashulani iti ",
+      "venue": 4,
+      "start_date": "2024-03-01T09:00:00Z",
+      "end_date": "2024-03-10T18:30:00Z",
+      "image": "event/event_default/default.jpeg",
+      "price": 150000,
+      "title": "Milion",
+      "city": 3,
+      "category": 5
+    }
+  },
+  {
+    "model": "apps.event",
+    "pk": 6,
+    "fields": {
+      "description": "ajoyib",
+      "venue": 1,
+      "start_date": "2024-03-01T09:00:00Z",
+      "end_date": "2024-03-10T18:30:00Z",
+      "image": "event/event_default/default.jpeg",
+      "price": 150000,
+      "title": "Aristokrat",
+      "city": 4,
+      "category": 4
+    }
+  },
+  {
+    "model": "apps.event",
+    "pk": 7,
+    "fields": {
+      "description": " biz siz bilan siz ham biz bilan birga boling ",
+      "venue": 3,
+      "start_date": "2024-03-01T09:00:00Z",
+      "end_date": "2024-03-10T18:30:00Z",
+      "image": "event/event_default/default.jpeg",
+      "price": 14000,
+      "title": "Br",
+      "city": 3,
+      "category": 4
+    }
+  },
+  {
+    "model": "apps.event",
+    "pk": 8,
+    "fields": {
+      "description": "gap pdiylikda taronalari",
+      "venue": 3,
+      "start_date": "2024-03-01T09:00:00Z",
+      "end_date": "2024-03-10T18:30:00Z",
+      "image": "event/event_default/default.jpeg",
+      "price": 120000,
+      "title": "Milion",
+      "city": 1,
+      "category": 3
+    }
+  },
+  {
+    "model": "apps.event",
+    "pk": 9,
+    "fields": {
+      "description": " ajoyib musiqalar olamiga xush kelibsiz",
+      "venue": 5,
+      "start_date": "2024-03-01T09:00:00Z",
+      "end_date": "2024-03-10T18:30:00Z",
+      "image": "event/event_default/default.jpeg",
+      "price": 110000,
+      "title": "Ozdodbek Nazarbekov",
+      "city": 4,
+      "category": 4
+    }
+  },
+  {
+    "model": "apps.event",
+    "pk": 10,
+    "fields": {
+      "description": "ROC musiqa",
+      "venue": 2,
+      "start_date": "2024-03-01T09:00:00Z",
+      "end_date": "2024-03-10T18:30:00Z",
+      "image": "event/event_default/default.jpeg",
+      "price": 100000,
+      "title": "Anvar sanayf",
+      "city": 5,
+      "category": 5
+    }
+  }
+]

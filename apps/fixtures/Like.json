@@ -1,0 +1,42 @@
+[
+  {
+    "model": "apps.like",
+    "pk": 1,
+    "fields": {
+      "like": 1,
+      "event": 2
+    }
+  },
+  {
+    "model": "apps.like",
+    "pk": 2,
+    "fields": {
+      "like": 0,
+      "event": 4
+    }
+  },
+  {
+    "model": "apps.like",
+    "pk": 3,
+    "fields": {
+      "like": 1,
+      "event": 2
+    }
+  },
+  {
+    "model": "apps.like",
+    "pk": 4,
+    "fields": {
+      "like": 1,
+      "event": 3
+    }
+  },
+  {
+    "model": "apps.like",
+    "pk": 5,
+    "fields": {
+      "like": 1,
+      "event": 5
+    }
+  }
+]

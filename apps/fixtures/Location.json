@@ -1,0 +1,24 @@
+[
+  {
+    "model": "apps.location",
+    "pk": 1,
+    "fields": {
+      "index": 21212,
+      "city": 1,
+      "description": "davlat poytaxt ",
+      "latitude": 40.7128,
+      "longitude": -74.0060
+    }
+  },
+  {
+    "model": "apps.location",
+    "pk": 2,
+    "fields": {
+      "index": 21212,
+      "city": 2,
+      "description": "ajoyib shaxar",
+      "latitude": 51.5074,
+      "longitude": -0.1278
+    }
+  }
+]

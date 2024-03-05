@@ -1,0 +1,92 @@
+[
+  {
+    "model": "apps.basket",
+    "pk": 1,
+    "fields": {
+      "event": 3,
+      "count": 23456,
+      "date": "2024-03-10T18:30:00Z"
+    }
+  },
+  {
+    "model": "apps.basket",
+    "pk": 2,
+    "fields": {
+      "event": 3,
+      "count": 23456,
+      "date": "2024-03-10T18:30:00Z"
+    }
+  },
+  {
+    "model": "apps.basket",
+    "pk": 3,
+    "fields": {
+      "event": 4,
+      "count": 23456,
+      "date": "2024-03-10T18:30:00Z"
+    }
+  },
+  {
+    "model": "apps.basket",
+    "pk": 4,
+    "fields": {
+      "event": 5,
+      "count": 23456,
+      "date": "2024-03-10T18:30:00Z"
+    }
+  },
+  {
+    "model": "apps.basket",
+    "pk": 5,
+    "fields": {
+      "event": 5,
+      "count": 23456,
+      "date": "2024-03-10T18:30:00Z"
+    }
+  },
+  {
+    "model": "apps.basket",
+    "pk": 6,
+    "fields": {
+      "event": 7,
+      "count": 23456,
+      "date": "2024-03-10T18:30:00Z"
+    }
+  },
+  {
+    "model": "apps.basket",
+    "pk": 7,
+    "fields": {
+      "event": 8,
+      "count": 23456,
+      "date": "2024-03-10T18:30:00Z"
+    }
+  },
+  {
+    "model": "apps.basket",
+    "pk": 8,
+    "fields": {
+      "event": 8,
+      "count": 23456,
+      "date": "2024-03-10T18:30:00Z"
+    }
+  },
+  {
+    "model": "apps.basket",
+    "pk": 9,
+    "fields": {
+      "event": 9,
+      "count": 23456,
+      "date": "2024-03-10T18:30:00Z"
+    }
+  },
+  {
+    "model": "apps.basket",
+    "pk": 10,
+    "fields": {
+      "event": 10,
+      "count": 23456,
+      "date": "2024-03-10T18:30:00Z"
+    }
+  }
+]

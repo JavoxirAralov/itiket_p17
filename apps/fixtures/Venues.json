@@ -1,0 +1,51 @@
+[
+  {
+    "model": "apps.venue",
+    "pk": 1,
+    "fields": {
+      "title": "Xalqlar  dostligi  saroyi ",
+      "description": "dadawdawdwadwadwa",
+      "image": "venues/venues_default/default.jpeg"
+    }
+  },
+    {
+    "model": "apps.venue",
+    "pk": 2,
+    "fields": {
+      "title": "durujba ",
+      "description": "dadawdawdwadwadwa",
+      "image": "venues/venues_default/default.jpeg"
+    }
+
+  },
+      {
+    "model": "apps.venue",
+    "pk": 3,
+    "fields": {
+      "title": "Sirk ",
+      "description": "ajoyib joylar ",
+      "image": "venues/venues_default/default.jpeg"
+    }
+
+  },
+      {
+    "model": "apps.venue",
+    "pk": 4,
+    "fields": {
+      "title": "Humo arena ",
+      "description": "mazza ",
+      "image": "venues/venues_default/default.jpeg"
+    }
+
+  },
+      {
+    "model": "apps.venue",
+    "pk": 5,
+    "fields": {
+      "title": "Hmaid olimjon kino teatiri",
+      "description": "daxshat",
+      "image": "venues/venues_default/default.jpeg"
+    }
+
+  }
+]

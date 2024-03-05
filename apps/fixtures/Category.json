@@ -1,0 +1,42 @@
+[
+  {
+    "model": "apps.category",
+    "pk": 1,
+    "fields": {
+      "name": "sadridin ayni uy muzeyi ",
+      "slug": "category-info"
+    }
+  },
+  {
+    "model": "apps.category",
+    "pk": 2,
+    "fields": {
+      "name": "Ozbekiston madaniyat Tarixi uy muzeyi",
+      "slug": "category-info"
+    }
+  },
+  {
+    "model": "apps.category",
+    "pk": 3,
+    "fields": {
+      "name": "Samarqand shaxar tarixiy  davalat muzeyi ",
+      "slug": "category-info"
+    }
+  },
+  {
+    "model": "apps.category",
+    "pk": 4,
+    "fields": {
+      "name": "Hokey mavsumi ",
+      "slug": "category-info"
+    }
+  },
+  {
+    "model": "apps.category",
+    "pk": 5,
+    "fields": {
+      "name": "Bibixonim maqbarasi",
+      "slug": "category-info"
+    }
+  }
+]

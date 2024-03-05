@@ -1,0 +1,142 @@
+ [
+   {
+    "model": "apps.order",
+    "pk": 1,
+    "fields": {
+      "firstname": " Javoxir",
+      "lastname":"Aralov",
+      "phone":"+998942400805",
+      "email": "aralovjavoxir@gmail.com",
+      "promo":1,
+      "event":1,
+      "location":1,
+      "courier":1
+    }
+  },
+      {
+    "model": "apps.order",
+    "pk": 2,
+    "fields": {
+      "firstname": "Nodirbek",
+      "lastname":"Aralov",
+      "phone":"+998942400805",
+      "email": "acralovejavoxir@gmail.com",
+      "promo":2,
+      "event":2,
+      "location":2,
+      "courier":2
+    }
+  },
+      {
+    "model": "apps.order",
+    "pk": 3,
+    "fields": {
+      "firstname": "Akmal",
+      "lastname":"Aralov",
+      "phone":"+998942400805",
+      "email": "anralofvjavoxir@gmail.com",
+      "promo":3,
+      "event":3,
+      "location":2,
+      "courier":3
+    }
+  },
+      {
+    "model": "apps.order",
+    "pk": 4,
+    "fields": {
+      "firstname": " Jamshid",
+      "lastname":"Aralov",
+      "phone":"+998942400805",
+      "email": "aeralovjavoxirg@gmail.com",
+      "promo":4,
+      "event":4,
+      "location":1,
+      "courier":4
+    }
+  },
+      {
+    "model": "apps.order",
+    "pk": 5,
+    "fields": {
+      "firstname": " Jasur",
+      "lastname":"Aralov",
+      "phone":"+998942400805",
+      "email": "alralovjavoexir@gmail.com",
+      "promo":5,
+      "event":5,
+      "location":2,
+      "courier":5
+    }
+  },
+      {
+    "model": "apps.order",
+    "pk": 6,
+    "fields": {
+      "firstname": "Begzod",
+      "lastname":"Aralov",
+      "phone":"+998942400805",
+      "email": "aeralovjreavoxir@gmail.com",
+      "promo":6,
+      "event":6,
+      "location":1,
+      "courier":2
+    }
+  },
+      {
+    "model": "apps.order",
+    "pk": 7,
+    "fields": {
+      "firstname": "avaz",
+      "lastname":"Aralov",
+      "phone":"+998942400805",
+      "email": "agralovjeqavoxir@gmail.com",
+      "promo":7,
+      "event":7,
+      "location":2,
+      "courier":3
+    }
+  },
+      {
+    "model": "apps.order",
+    "pk": 8,
+    "fields": {
+      "firstname": "Bexruz",
+      "lastname":"Aralov",
+      "phone":"+998942400805",
+      "email": "adralovjafrevoxir@gmail.com",
+      "promo":8,
+      "event":8,
+      "location":1,
+      "courier":1
+    }
+  },
+      {
+    "model": "apps.order",
+    "pk": 9,
+    "fields": {
+      "firstname": "shokhjahon",
+      "lastname":"Aralov",
+      "phone":"+998942400805",
+      "email": "ajralovjavfreoxir@gmail.com",
+      "promo":9,
+      "event":9,
+      "location":2,
+      "courier":4
+    }
+  },
+      {
+    "model": "apps.order",
+    "pk": 10,
+    "fields": {
+      "firstname": "shamsiddin",
+      "lastname":"Aralov",
+      "phone":"+998942400805",
+      "email": "aaralovjwefavoxir@gmail.com",
+      "promo":9,
+      "event":10,
+      "location":1,
+      "courier":1
+    }
+  }
+]
