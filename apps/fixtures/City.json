@@ -15587,7 +15587,7 @@
     "model": "apps.city",
     "pk": 1949,
     "fields": {
-      "country": "Georgia",
+      "country": 80,
       "name": "Gogolesubani"
     }
   },
@@ -15595,7 +15595,7 @@
     "model": "apps.city",
     "pk": 1950,
     "fields": {
-      "country": "Georgia",
+      "country": 80,
       "name": "Kutaisi"
     }
   },
@@ -15603,7 +15603,7 @@
     "model": "apps.city",
     "pk": 1951,
     "fields": {
-      "country": "Georgia",
+      "country": 80,
       "name": "Lentekhi"
     }
   },
@@ -15611,7 +15611,7 @@
     "model": "apps.city",
     "pk": 1952,
     "fields": {
-      "country": "Georgia",
+      "country": 80,
       "name": "Qazbegi"
     }
   },
@@ -15619,7 +15619,7 @@
     "model": "apps.city",
     "pk": 1953,
     "fields": {
-      "country": "Georgia",
+      "country": 80,
       "name": "Samtredia"
     }
   },
@@ -15627,7 +15627,7 @@
     "model": "apps.city",
     "pk": 1954,
     "fields": {
-      "country": "Georgia",
+      "country": 80,
       "name": "Sukhumi"
     }
   },
@@ -15635,7 +15635,7 @@
     "model": "apps.city",
     "pk": 1955,
     "fields": {
-      "country": "Georgia",
+      "country": 80,
       "name": "Tbilisi"
     }
   },
@@ -15643,7 +15643,7 @@
     "model": "apps.city",
     "pk": 1956,
     "fields": {
-      "country": "Georgia",
+      "country": 80,
       "name": "Zemo-Avchala"
     }
   },
@@ -15651,7 +15651,7 @@
     "model": "apps.city",
     "pk": 1957,
     "fields": {
-      "country": "Georgia",
+      "country": 80,
       "name": "Zugdidi"
     }
   },

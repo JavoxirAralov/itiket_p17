@@ -3,7 +3,7 @@
     "model": "apps.venue",
     "pk": 1,
     "fields": {
-      "title": "Xalqlar  dostligi  saroyi ",
+      "title": "Xalqlar  dostligi  saroyi",
       "description": "dadawdawdwadwadwa",
       "image": "venues/venues_default/default.jpeg"
     }
