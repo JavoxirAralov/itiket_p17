@@ -1,17 +1,17 @@
 loaddata:
-	python manage.py loaddata Venues
-	python manage.py loaddata Country
-	python manage.py loaddata City
-	python manage.py loaddata Category
-	python manage.py loaddata Event
-	python manage.py loaddata PromoCode
-	python manage.py loaddata Like
-	python manage.py loaddata Basket
-	python manage.py loaddata Courier
-	python manage.py loaddata Location
-	python manage.py loaddata Promotion
-	python manage.py loaddata Order
-	python manage.py loaddata Session
+	python manage.py loaddata venues
+	python manage.py loaddata country
+	python manage.py loaddata city
+	python manage.py loaddata category
+	python manage.py loaddata event
+	python manage.py loaddata promoCode
+	python manage.py loaddata like
+	python manage.py loaddata basket
+	python manage.py loaddata courier
+	python manage.py loaddata location
+	python manage.py loaddata promotion
+	python manage.py loaddata order
+	python manage.py loaddata session
 
 admin:
 	python3 manage.py createsuperuser

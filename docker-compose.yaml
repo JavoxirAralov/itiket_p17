@@ -12,10 +12,25 @@ services:
   postgres_service:
     image: postgres:alpine
     ports:
-      - '5432:5432'
+      - '5433:5432'
     env_file: .env
     volumes:
       - pg_data_service:/var/lib/postgresql/data
+
+
+  flower:
+    build:
+      context: .
+      dockerfile: ./compose/django/Dockerfile
+    command: /start-flower
+    volumes:
+      - .:/app
+    ports:
+      - 5557:5555
+    depends_on:
+      - redis
+      - postgres
+
 
   minio_service:
     image: minio/minio

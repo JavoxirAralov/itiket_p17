@@ -4,6 +4,8 @@ from django.db.models import Model, DateTimeField, CharField, EmailField, Foreig
 from django_ckeditor_5.fields import CKEditor5Field
 from django_resized import ResizedImageField
 
+from apps.utils import phone_number_validator
+
 
 class CreatedBaseModel(Model):
     created_at = DateTimeField(auto_now_add=True)
@@ -23,7 +25,7 @@ class StartEndBaseModel(Model):
 class User(AbstractUser):
     gender = BooleanField(default=True, null=True)
     city = ForeignKey('apps.City', CASCADE, related_name='cities', default=True, null=True)
-
+    phone = CharField(validators=[phone_number_validator], max_length=20, unique=True)
     def __str__(self):
         return self.username
 
