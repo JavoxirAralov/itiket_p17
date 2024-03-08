@@ -6,6 +6,7 @@ loaddata:
 	python manage.py loaddata event
 	python manage.py loaddata promoCode
 	python manage.py loaddata like
+
 	python manage.py loaddata basket
 	python manage.py loaddata courier
 	python manage.py loaddata location

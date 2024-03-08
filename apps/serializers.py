@@ -1,4 +1,4 @@
-from .models import User ,Event,Promotion,Location,Venue
+from .models import User, Event, Promotion, Location, Venue
 from django.contrib.auth.hashers import make_password
 from rest_framework.serializers import ModelSerializer
 
@@ -18,7 +18,7 @@ class UserDetailModelSerializer(ModelSerializer):
 class UserCreateModelSerializer(ModelSerializer):
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'phone','email', 'password')
+        fields = ('first_name', 'last_name', 'phone', 'email', 'password')
         extra_kwargs = {
             'password': {'write_only': True}
         }
@@ -26,10 +26,7 @@ class UserCreateModelSerializer(ModelSerializer):
     def validate_password(self, password):
         return make_password(password)
 
-
-
 # class EventModelSerializer(ModelSerializer):
 #     class Meta:
 #         model = Event
 #         exclude= ("price")
-

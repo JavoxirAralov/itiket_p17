@@ -1,10 +1,9 @@
 from django.contrib.auth.models import AbstractUser
-from django.db.models import Model, DateTimeField, CharField, EmailField, ForeignKey, CASCADE, TextField, IntegerField, \
+from django.db import models
+from django.db.models import Model, DateTimeField, CharField, EmailField, ForeignKey, CASCADE, IntegerField, \
     BooleanField, ManyToManyField, PositiveIntegerField, DecimalField
 from django_ckeditor_5.fields import CKEditor5Field
 from django_resized import ResizedImageField
-
-from apps.utils import phone_number_validator
 
 
 class CreatedBaseModel(Model):
@@ -24,8 +23,9 @@ class StartEndBaseModel(Model):
 
 class User(AbstractUser):
     gender = BooleanField(default=True, null=True)
-    city = ForeignKey('apps.City', CASCADE, related_name='cities', default=True, null=True)
-    phone = CharField(validators=[phone_number_validator], max_length=20, unique=True)
+    city = ForeignKey('City', on_delete=models.CASCADE, blank=True, null=True)
+    image = ResizedImageField()
+
     def __str__(self):
         return self.username
 
@@ -48,7 +48,7 @@ class Country(Model):
 
 class City(Model):
     name = CharField(max_length=255)
-    country = ForeignKey('apps.Country', CASCADE)
+    country = ForeignKey('Country', CASCADE)
 
     def __str__(self):
         return self.name
@@ -60,13 +60,13 @@ class City(Model):
 
 class Event(StartEndBaseModel):
     description = CKEditor5Field(blank=True, null=True, config_name='extends')
-    venue = ForeignKey('apps.Venue', CASCADE)
+    venue = ForeignKey('Venue', CASCADE)
     image = ResizedImageField(size=[200, 200], crop=['middle', 'center'], upload_to='event',
                               default='event/event_default/default.jpg')
     price = PositiveIntegerField(default=0)
     title = CharField(max_length=70)
-    city = ForeignKey('apps.City', CASCADE)
-    category = ForeignKey('apps.Category', CASCADE)
+    city = ForeignKey('City', CASCADE)
+    category = ForeignKey('Category', CASCADE)
 
     class Meta:
         verbose_name = 'Event'
@@ -75,7 +75,7 @@ class Event(StartEndBaseModel):
 
 class Promotion(Model):
     name = CharField(max_length=255)
-    event = ManyToManyField('apps.Event', blank=True)
+    event = ManyToManyField('Event', blank=True, related_name='promotions')
 
     class Meta:
         verbose_name = 'Promotion'
@@ -88,8 +88,8 @@ class Promotion(Model):
 class Session(StartEndBaseModel):
     name = CharField(max_length=70)
     price = PositiveIntegerField(default=0)
-    event = ForeignKey('apps.Event', CASCADE)
-    order = ForeignKey('apps.Order', CASCADE)
+    event = ForeignKey('Event', CASCADE)
+    order = ForeignKey('Order', CASCADE)
 
     def __str__(self):
         return self.name
@@ -97,13 +97,15 @@ class Session(StartEndBaseModel):
 
 class Location(Model):
     index = IntegerField()
-    city = ForeignKey('apps.City', CASCADE)
+    city = ForeignKey('City', CASCADE)
     description = CKEditor5Field(blank=True, null=True, config_name='extends')
     latitude = DecimalField(max_digits=9, decimal_places=6)
     longitude = DecimalField(max_digits=9, decimal_places=6)
+    is_deleted = BooleanField(default=False)
+    order = ManyToManyField('Order', related_name='locations')
 
     def __str__(self):
-        return self.index
+        return str(self.index)
 
     class Meta:
         verbose_name = 'Location'
@@ -115,13 +117,13 @@ class Order(Model):
     lastname = CharField(max_length=70)
     phone = CharField(max_length=70)
     email = EmailField(unique=True)
-    promo = ForeignKey('apps.PromoCode', CASCADE)
-    event = ForeignKey('apps.Event', CASCADE)
-    location = ForeignKey('apps.Location', CASCADE)
-    courier = ForeignKey('apps.Courier', CASCADE)
+    promo = ForeignKey('PromoCode', CASCADE)
+    event = ForeignKey('Event', CASCADE)
+    location = ForeignKey('Location', CASCADE, related_name='orders')
+    courier = ForeignKey('Courier', CASCADE)
 
     def __str__(self):
-        return self.firstname + ' ' + self.lastname
+        return self.firstname
 
 
 class Category(Model):
@@ -137,21 +139,26 @@ class Category(Model):
 
 
 class Basket(Model):
-    event = ForeignKey('apps.Event', CASCADE)
+    event = ForeignKey('Event', CASCADE)
     count = PositiveIntegerField(default=0)
     date = DateTimeField(auto_now_add=True)
 
 
 class Like(Model):
+    name = ForeignKey('User', on_delete=CASCADE)
     like = BooleanField(default=False)
-    event = ForeignKey('apps.Event', CASCADE)
+    event = ForeignKey('Event', CASCADE)
 
 
 class Venue(Model):
+    banner = ResizedImageField(size=[1000, 320], crop=['middle', 'center'], upload_to='venues_banner')
     title = CharField(max_length=255)
     description = CKEditor5Field(blank=True, null=True, config_name='extends')
     image = ResizedImageField(size=[200, 200], crop=['middle', 'center'], upload_to='venues',
                               default='venues/venues_default/default.jpg')
+    location = ForeignKey('apps.Location', CASCADE)
+    phone = CharField(max_length=70)
+    address = CharField(max_length=100, blank=True)
 
     def __str__(self):
         return self.title
@@ -175,5 +182,5 @@ class Courier(Model):
     building = CharField(max_length=100)
     house_number = CharField(max_length=100)
     index = CharField(max_length=100)
-    country = ForeignKey('apps.Country', CASCADE)
-    city = ForeignKey('apps.City', CASCADE)
+    country = ForeignKey('Country', CASCADE)
+    city = ForeignKey('City', CASCADE)
