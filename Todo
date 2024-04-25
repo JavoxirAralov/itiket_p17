@@ -26,3 +26,31 @@ docker run -p 9000:9000 -p 9001:9001 minio/minio server /data --console-address 
 
             --------Fixture---------
 MakeFile da loadata bor  u togridan togri databaseni  malumotlar bilan toldiriberadi
+make file ishlayotkanda ortada xatolik beradi  sababi  user freginkey bolgan joyi bor shu vaxt
+python manage.py createsuperuser  qilish kerak
+
+
+
+
+
+1. login register
+2. redis
+3. update user
+4. country
+5.
+
+
+
+TASK
+1. celery, flower, celery-beat [eng yaqin qolgan event pochta har kuni ertalab soat 8da] (Abdurahmon)
+2. user verification, i18n - modeldagi barcha fieldlarni tarjima qilamiz (parler),
+django-jazzmin (tepada 2ta til chiqish kk, [en, uz]) (Shamsiddin)
+3. https://iticket.uz/events shuni API sini yozish kk [filter bilan, pagination] (Javohir)
+4. change password, profile update, reset password, joylarni(venues [https://iticket.uz/venues]) API sini yozish kk (Sarvar)
+
+
+
+
+
+
+

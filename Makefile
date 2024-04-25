@@ -4,7 +4,7 @@ loaddata:
 	python manage.py loaddata city
 	python manage.py loaddata category
 	python manage.py loaddata event
-	python manage.py loaddata promoCode
+	python manage.py loaddata promocode
 	python manage.py loaddata like
 
 	python manage.py loaddata basket
@@ -13,6 +13,11 @@ loaddata:
 	python manage.py loaddata promotion
 	python manage.py loaddata order
 	python manage.py loaddata session
+
+migrate:
+	python manage.py makemigrations
+	python manage.py migrate
+
 
 admin:
 	python3 manage.py createsuperuser

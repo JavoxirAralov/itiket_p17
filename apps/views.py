@@ -1,32 +1,28 @@
-from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.decorators import action
-from rest_framework.filters import OrderingFilter, SearchFilter
-from rest_framework.permissions import AllowAny
-from rest_framework.response import Response
-from rest_framework.viewsets import ModelViewSet
-from rest_framework.generics import ListAPIView, RetrieveDestroyAPIView, CreateAPIView
 from apps.models import User
-from apps.serializers import UserModelSerializer, UserCreateModelSerializer
+from apps.serializers import RegisterModelSerializer
+from django.core.cache import cache
+from rest_framework.generics import CreateAPIView
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
-
-class UserViewSet(ModelViewSet):
-    serializer_class = UserModelSerializer
-    queryset = User.objects.all()
-    permission_classes = AllowAny,
-    filter_backends = (OrderingFilter, DjangoFilterBackend, SearchFilter)
-    search_fields = ('firstname', 'email')
-
-    @action(detail=False, methods=['GET'], url_path='get-me')
-    def get_me(self, request, pk=None):
-        if request.user.is_authenticated:
-            return Response({'message': f'{request.user.username}'})
-        return Response({'message': 'login qilinmagan'})
-
-
+from apps.utils import send_verification_email
 
 
 class RegisterCreateAPIView(CreateAPIView):
     queryset = User.objects.all()
-    serializer_class = UserCreateModelSerializer
+    serializer_class = RegisterModelSerializer
+
+    def get_success_headers(self, data):
+        import uuid
+        _uuid = uuid.uuid4()
+        send_verification_email(data['email'], _uuid.__str__())
+        cache.set(_uuid, data['email'])
+        print('sent email!')
+        return super().get_success_headers(data)
 
 
+class ConfirmEmailAPIView(APIView):
+    def get(self, request, pk):
+        email = cache.get(pk)
+        User.objects.filter(email=email).update(is_active=True)
+        return Response({'message': 'User confirmed email!'})

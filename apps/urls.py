@@ -5,14 +5,16 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 
-from apps.views import UserViewSet, RegisterCreateAPIView
+from apps.views import RegisterCreateAPIView, ConfirmEmailAPIView
 
-router = DefaultRouter()
-router.register('users', UserViewSet, basename='user')
+# from apps.views import UserViewSet,
+#
+# router = DefaultRouter()
+# router.register('users', UserViewSet, basename='user')
 
 urlpatterns = [
     path('token', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh', TokenRefreshView.as_view(),name='token_refresh'),
-    path('users/register', RegisterCreateAPIView.as_view(), name='category'),
-    path('', include(router.urls)),
+    path('users/sign-up', RegisterCreateAPIView.as_view(), name='register'),
+    path('confirm-email/<uuid:pk>', ConfirmEmailAPIView.as_view(), name='register')
 ]
