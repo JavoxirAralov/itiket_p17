@@ -327,6 +327,11 @@ REST_FRAMEWORK = {
     # 'DEFAULT_AUTHENTICATION_CLASSES': [
     #     'rest_framework_simplejwt.authentication.JWTAuthentication',
     # ]
+    'DEFAULT_PAGINATION_CLASS':
+        'rest_framework.pagination.PageNumberPagination',
+
+    # Show 5 records in a single page
+    'PAGE_SIZE': 10
 }
 
 SIMPLE_JWT = {
@@ -345,8 +350,8 @@ LOGOUT_REDIRECT_URL = '/admin'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 465
-EMAIL_USE_SSL = True
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 

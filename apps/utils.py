@@ -1,3 +1,5 @@
+
+
 from django.core.validators import RegexValidator
 from django.core.validators import RegexValidator
 
@@ -29,3 +31,14 @@ def send_verification_email(email: str, _uuid: str):
     )
     message.attach_alternative(html_message, 'text/html')
     message.send()
+from django.core.mail import EmailMessage
+import os
+
+class Util:
+  @staticmethod
+  def send_email(data):
+    email = EmailMessage(
+     subject = data['email_subject'], body=data['email_body'], to=[data['to_email']]
+    )
+
+    email.send()

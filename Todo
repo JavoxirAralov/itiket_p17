@@ -50,7 +50,5 @@ django-jazzmin (tepada 2ta til chiqish kk, [en, uz]) (Shamsiddin)
 
 
 
-
-
-
-
+TASK - 2
+2. change password, reset password(rest api uchun ishlaydigan qilish kk), venues modelsga (slug, long, lat)

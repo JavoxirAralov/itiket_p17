@@ -2,6 +2,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.db.models import Model, DateTimeField, CharField, EmailField, ForeignKey, CASCADE, IntegerField, \
     BooleanField, ManyToManyField, PositiveIntegerField, DecimalField
+from django.db.models.fields import DateField
 from django_ckeditor_5.fields import CKEditor5Field
 from django_resized import ResizedImageField
 
@@ -24,7 +25,8 @@ class StartEndBaseModel(Model):
 class User(AbstractUser):
     gender = BooleanField(default=True, null=True)
     city = ForeignKey('City', on_delete=models.CASCADE, blank=True, null=True)
-    image = ResizedImageField()
+    phone = CharField(max_length=11, blank=True, null=True)
+    birthday = DateField(blank=True, null=True)
 
     def __str__(self):
         return self.username
@@ -156,9 +158,12 @@ class Venue(Model):
     description = CKEditor5Field(blank=True, null=True, config_name='extends')
     image = ResizedImageField(size=[200, 200], crop=['middle', 'center'], upload_to='venues',
                               default='venues/venues_default/default.jpg')
-    location = ForeignKey('apps.Location', CASCADE)
+    # location = ForeignKey('apps.Location', CASCADE)  # TODO: check
     phone = CharField(max_length=70)
     address = CharField(max_length=100, blank=True)
+    slug = CharField(max_length=100)
+    lang = CharField(max_length=10)
+    lat = CharField(max_length=10)
 
     def __str__(self):
         return self.title
@@ -184,3 +189,9 @@ class Courier(Model):
     index = CharField(max_length=100)
     country = ForeignKey('Country', CASCADE)
     city = ForeignKey('City', CASCADE)
+
+
+class PasswordResent(Model):
+    email = EmailField(unique=True)
+    token = CharField(max_length=100)
+    created_at = DateTimeField(auto_now_add=True)
