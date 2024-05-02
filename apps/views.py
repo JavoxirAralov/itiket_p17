@@ -1,11 +1,11 @@
 from apps.models import User, Event, Country, City
-from apps.pagination import PageSortNumberPagination
+
 from apps.serializers import RegisterModelSerializer, EventsModelSerializer, CountryModelSerializer, CityModelSerializer
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 
 from apps.models import User, Venue
-from rest_framework.decorators import api_view
+
 from apps.serializers import UserCreateModelSerializer, VenueModelSerializer, UpdateUserModelSerializer, \
     ChangePasswordSerializer, ResetPasswordRequestSerializer, SetNewPasswordSerializer
 from django.core.cache import cache
@@ -20,7 +20,8 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
 
 from .utils import Util
-from apps.pagination import VanuesPageNumberPagination
+from apps.pagination import PageSortNumberPagination
+
 
 class RegisterCreateAPIView(CreateAPIView):
     queryset = User.objects.all()
@@ -61,7 +62,7 @@ class CityListAPIView(ListAPIView):
 class VenueListAPIView(ListAPIView):
     queryset = Venue.objects.all()
     serializer_class = VenueModelSerializer
-    pagination_class = VanuesPageNumberPagination
+    pagination_class = PageSortNumberPagination
 
 
 class UserUpdateAPIView(UpdateAPIView):
@@ -82,6 +83,8 @@ class ChangePasswordView(UpdateAPIView):
 
     def get_object(self):
         return self.request.user
+
+
 class RequestResetPasswordEmail(GenericAPIView):
     serializer_class = ResetPasswordRequestSerializer
 
@@ -102,23 +105,25 @@ class RequestResetPasswordEmail(GenericAPIView):
 
 
 class PasswordTokenCheckAPI(GenericAPIView):
-    serializer_class =  ResetPasswordRequestSerializer
+    serializer_class = ResetPasswordRequestSerializer
+
     def get(self, request, uidb64, token):
         try:
             id = force_str(urlsafe_base64_decode(uidb64))
             user = User.objects.get(id=id)
-            if not PasswordResetTokenGenerator().check_token(user,token):
+            if not PasswordResetTokenGenerator().check_token(user, token):
                 return Response({'error': 'Invalid token'}, status=status.HTTP_400_BAD_REQUEST)
-            return Response({'success': True, 'message': 'Credentials valid', 'uidb64': uidb64, 'token': token}, status=status.HTTP_200_OK)
+            return Response({'success': True, 'message': 'Credentials valid', 'uidb64': uidb64, 'token': token},
+                            status=status.HTTP_200_OK)
         except DjangoUnicodeDecodeError as identifier:
             if not PasswordResetTokenGenerator().check_token(user, token):
                 return Response({'error': 'Invalid token or password'}, status=status.HTTP_400_BAD_REQUEST)
 
+
 class SetNewPasswordAPI(GenericAPIView):
     serializer_class = SetNewPasswordSerializer
+
     def patch(self, request):
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid()
         return Response({'success': True, 'message': "Your password has been updated!"}, status=status.HTTP_200_OK)
-
-

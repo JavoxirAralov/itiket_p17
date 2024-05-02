@@ -94,7 +94,7 @@ msgstr ""
 #: root/settings.py:95
 msgid "English"
 msgstr ""
-`
+
 #: root/settings.py:96
 msgid "Uzbek"
 msgstr ""

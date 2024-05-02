@@ -28,7 +28,7 @@ class StartEndBaseModel(Model):
 
 class User(AbstractUser):
     gender = BooleanField(default=True, null=True)
-    # city = ForeignKey('City', on_delete=models.CASCADE, blank=True, null=True)
+    city = ForeignKey('City', on_delete=models.CASCADE, blank=True, null=True)
     image = ResizedImageField(size=[200, 200], crop=['middle', 'center'], upload_to='event',
                               default='event/event_default/default.jpg')
     phone = CharField(max_length=25, validators=[phone_regex], help_text='+9989***')
@@ -74,7 +74,6 @@ class Event(StartEndBaseModel, TranslatableModel):
     image = ResizedImageField(size=[200, 200], crop=['middle', 'center'], upload_to='event',
                               default='event/event_default/default.jpg')
     price = PositiveIntegerField(default=0)
-    title = CharField(max_length=70)
     city = ForeignKey('City', CASCADE)
     category = ForeignKey('Category', CASCADE)
     slug = CharField(max_length=100)  # add slug  in  fixture
@@ -191,8 +190,6 @@ class Venue(TranslatableModel):
     image = ResizedImageField(size=[200, 200], crop=['middle', 'center'], upload_to='venues',
                               default='venues/venues_default/default.jpg')
     # location = ForeignKey('apps.Location', CASCADE)  # TODO: check
-
-    address = CharField(max_length=100, blank=True)
     slug = CharField(max_length=100)
     lang = CharField(max_length=10)
     lat = CharField(max_length=10)
