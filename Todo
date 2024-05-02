@@ -31,7 +31,14 @@ python manage.py createsuperuser  qilish kerak
 
 
 
+python3 manage.py makemessages -l uz -l en
+python3 manage.py compilemessages --ignore=.venv
 
+TASK - 2
+1. apidan keladigan malumot eventni slugi, category malumotlari + slug,
+user verification(pochtaga tasdiqlash 1martalik link yuboriladi), i18n - modeldagi barcha fieldlarni tarjima qilamiz (parler),
+django-jazzmin (tepada 2ta til chiqish kk, [en, uz] bayrogi) (javohir)
+2.  
 
 1. login register
 2. redis
@@ -41,10 +48,10 @@ python manage.py createsuperuser  qilish kerak
 
 
 
-TASK
+TASK - 1
 1. celery, flower, celery-beat [eng yaqin qolgan event pochta har kuni ertalab soat 8da] (Abdurahmon)
 2. user verification, i18n - modeldagi barcha fieldlarni tarjima qilamiz (parler),
-django-jazzmin (tepada 2ta til chiqish kk, [en, uz]) (Shamsiddin)
+django-jazzmin (tepada 2ta til chiqish kk, [en, uz] bayrogi) (Shamsiddin)
 3. https://iticket.uz/events shuni API sini yozish kk [filter bilan, pagination] (Javohir)
 4. change password, profile update, reset password, joylarni(venues [https://iticket.uz/venues]) API sini yozish kk (Sarvar)
 

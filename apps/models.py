@@ -5,6 +5,10 @@ from django.db.models import Model, DateTimeField, CharField, EmailField, Foreig
 from django.db.models.fields import DateField
 from django_ckeditor_5.fields import CKEditor5Field
 from django_resized import ResizedImageField
+from parler.models import TranslatableModel, TranslatedFields
+from django.utils.translation import gettext_lazy as _
+
+from apps.utils import phone_regex
 
 
 class CreatedBaseModel(Model):
@@ -24,9 +28,11 @@ class StartEndBaseModel(Model):
 
 class User(AbstractUser):
     gender = BooleanField(default=True, null=True)
-    city = ForeignKey('City', on_delete=models.CASCADE, blank=True, null=True)
-    phone = CharField(max_length=11, blank=True, null=True)
-    birthday = DateField(blank=True, null=True)
+    # city = ForeignKey('City', on_delete=models.CASCADE, blank=True, null=True)
+    image = ResizedImageField(size=[200, 200], crop=['middle', 'center'], upload_to='event',
+                              default='event/event_default/default.jpg')
+    phone = CharField(max_length=25, validators=[phone_regex], help_text='+9989***')
+    birthday = DateTimeField(null=True, blank=True)
 
     def __str__(self):
         return self.username
@@ -60,35 +66,46 @@ class City(Model):
         verbose_name_plural = 'Cities'
 
 
-class Event(StartEndBaseModel):
-    description = CKEditor5Field(blank=True, null=True, config_name='extends')
-    venue = ForeignKey('Venue', CASCADE)
+class Event(StartEndBaseModel, TranslatableModel):
+    translations = TranslatedFields(
+        description=CKEditor5Field(verbose_name=_('description'), blank=True, null=True, config_name='extends'),
+        title=CharField(verbose_name=_('title'), max_length=70),
+    )
     image = ResizedImageField(size=[200, 200], crop=['middle', 'center'], upload_to='event',
                               default='event/event_default/default.jpg')
     price = PositiveIntegerField(default=0)
     title = CharField(max_length=70)
     city = ForeignKey('City', CASCADE)
     category = ForeignKey('Category', CASCADE)
+    slug = CharField(max_length=100)  # add slug  in  fixture
 
     class Meta:
-        verbose_name = 'Event'
-        verbose_name_plural = 'Events'
+        verbose_name = _('Event')
+        verbose_name_plural = _('Events')
 
 
-class Promotion(Model):
-    name = CharField(max_length=255)
+class Promotion(TranslatableModel):
+    translations = TranslatedFields(
+        name=CharField(verbose_name=_('name'), max_length=255),
+
+    )
+
     event = ManyToManyField('Event', blank=True, related_name='promotions')
 
     class Meta:
-        verbose_name = 'Promotion'
-        verbose_name_plural = 'Promotions'
+        verbose_name = _('Promotion')
+        verbose_name_plural = _('Promotions')
 
     def __str__(self):
         return self.name
 
 
-class Session(StartEndBaseModel):
-    name = CharField(max_length=70)
+class Session(StartEndBaseModel, TranslatableModel):
+    translations = TranslatedFields(
+        name=CharField(verbose_name=_('name'), max_length=100),
+
+    )
+
     price = PositiveIntegerField(default=0)
     event = ForeignKey('Event', CASCADE)
     order = ForeignKey('Order', CASCADE)
@@ -97,10 +114,14 @@ class Session(StartEndBaseModel):
         return self.name
 
 
-class Location(Model):
+class Location(TranslatableModel):
+    translations = TranslatedFields(
+        description=CKEditor5Field(verbose_name=_('description'), blank=True, null=True, config_name='extends'),
+
+    )
     index = IntegerField()
     city = ForeignKey('City', CASCADE)
-    description = CKEditor5Field(blank=True, null=True, config_name='extends')
+
     latitude = DecimalField(max_digits=9, decimal_places=6)
     longitude = DecimalField(max_digits=9, decimal_places=6)
     is_deleted = BooleanField(default=False)
@@ -114,10 +135,14 @@ class Location(Model):
         verbose_name_plural = 'Locations'
 
 
-class Order(Model):
-    firstname = CharField(max_length=70)
-    lastname = CharField(max_length=70)
-    phone = CharField(max_length=70)
+class Order(TranslatableModel):
+    translations = TranslatedFields(
+        firstname=CharField(verbose_name=_('firstname'), max_length=70),
+        lastname=CharField(verbose_name=_('lastname'), max_length=70),
+
+    )
+
+    phone = CharField(max_length=25, validators=[phone_regex], help_text='+9989***')
     email = EmailField(unique=True)
     promo = ForeignKey('PromoCode', CASCADE)
     event = ForeignKey('Event', CASCADE)
@@ -128,8 +153,10 @@ class Order(Model):
         return self.firstname
 
 
-class Category(Model):
-    name = CharField(max_length=255)
+class Category(TranslatableModel):
+    translations = TranslatedFields(
+        name=CharField(verbose_name=_('name'), max_length=255),
+    )
     slug = CharField(max_length=100)
 
     def __str__(self):
@@ -146,24 +173,31 @@ class Basket(Model):
     date = DateTimeField(auto_now_add=True)
 
 
-class Like(Model):
-    name = ForeignKey('User', on_delete=CASCADE)
+class Like(TranslatableModel):
+    translations = TranslatedFields(
+        name=ForeignKey('apps.User', verbose_name=_('name'), on_delete=models.CASCADE),
+    )
     like = BooleanField(default=False)
     event = ForeignKey('Event', CASCADE)
 
 
-class Venue(Model):
+class Venue(TranslatableModel):
+    translations = TranslatedFields(
+        title=CharField(verbose_name=_('title'), max_length=255),
+        description=CKEditor5Field(verbose_name=_('description'), blank=True, null=True, config_name='extends'),
+        address=CharField(verbose_name=_('address'), max_length=100, blank=True)
+    )
     banner = ResizedImageField(size=[1000, 320], crop=['middle', 'center'], upload_to='venues_banner')
-    title = CharField(max_length=255)
-    description = CKEditor5Field(blank=True, null=True, config_name='extends')
     image = ResizedImageField(size=[200, 200], crop=['middle', 'center'], upload_to='venues',
                               default='venues/venues_default/default.jpg')
     # location = ForeignKey('apps.Location', CASCADE)  # TODO: check
-    phone = CharField(max_length=70)
+
     address = CharField(max_length=100, blank=True)
     slug = CharField(max_length=100)
     lang = CharField(max_length=10)
     lat = CharField(max_length=10)
+    phone = CharField(max_length=25, validators=[phone_regex], help_text='+9989***')
+    event = ForeignKey('apps.Event', CASCADE)  # it was chnaged the event and venu ForeginKey, change fixiture also
 
     def __str__(self):
         return self.title
@@ -173,25 +207,23 @@ class Venue(Model):
         verbose_name_plural = 'Venues'
 
 
-class PromoCode(StartEndBaseModel):
-    name = CharField(max_length=255)
+class PromoCode(StartEndBaseModel, TranslatableModel):
+    translations = TranslatedFields(
+        promo=CharField(verbose_name=_('promo'), max_length=255)  # So Promo cod will be always in English laltar
+    )
 
     def __str__(self):
-        return self.name
+        return self.promo
 
 
-class Courier(Model):
-    title = CharField(max_length=70)
-    description = CKEditor5Field(blank=True, null=True, config_name='extends')
-    street = CharField(max_length=100)
+class Courier(TranslatableModel):
+    translations = TranslatedFields(
+        title=CharField(verbose_name=_('title'), max_length=70),
+        description=CKEditor5Field(verbose_name=_('description'), blank=True, null=True, config_name='extends'),
+        street=CharField(verbose_name=_('street'), max_length=100)
+    )
     building = CharField(max_length=100)
-    house_number = CharField(max_length=100)
-    index = CharField(max_length=100)
+    house_number = CharField(max_length=100)  # House number might be  -  74A
+    index = CharField(max_length=100)  # Index number might  be  - AB12345
     country = ForeignKey('Country', CASCADE)
     city = ForeignKey('City', CASCADE)
-
-
-class PasswordResent(Model):
-    email = EmailField(unique=True)
-    token = CharField(max_length=100)
-    created_at = DateTimeField(auto_now_add=True)

@@ -3,6 +3,7 @@
     "model": "apps.like",
     "pk": 1,
     "fields": {
+      "name": 1,
       "like": 1,
       "event": 2
     }
@@ -11,6 +12,7 @@
     "model": "apps.like",
     "pk": 2,
     "fields": {
+      "name": 1,
       "like": 0,
       "event": 4
     }
@@ -19,6 +21,7 @@
     "model": "apps.like",
     "pk": 3,
     "fields": {
+      "name": 1,
       "like": 1,
       "event": 2
     }
@@ -27,6 +30,7 @@
     "model": "apps.like",
     "pk": 4,
     "fields": {
+      "name": 1,
       "like": 1,
       "event": 3
     }
@@ -35,6 +39,7 @@
     "model": "apps.like",
     "pk": 5,
     "fields": {
+      "name": 1,
       "like": 1,
       "event": 5
     }

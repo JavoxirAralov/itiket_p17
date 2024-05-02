@@ -3,8 +3,9 @@ from django.contrib.admin import ModelAdmin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import Group
 from django.utils.translation import gettext_lazy as _
+from parler.admin import TranslatableAdmin
+
 from apps.models import Location, City, Country, Event, Session, Order, Category, PromoCode, Promotion, Courier, User
-from django.utils.safestring import mark_safe
 
 admin.site.unregister(Group)
 
@@ -32,51 +33,11 @@ class CustomUserAdmin(UserAdmin):
     )
 
 
-@admin.register(Location,Promotion,Event)
-class ProductModelAdmin(ModelAdmin):
-    pass
-
-
-# @admin.register(Promotion)
-# class ProductModelAdmin(ModelAdmin):
-#     pass
-
-
 @admin.register(City)
-class ProductModelAdmin(ModelAdmin):
+class CertificatesAdmin(TranslatableAdmin):
     pass
 
 
 @admin.register(Country)
-class ProductModelAdmin(ModelAdmin):
-    pass
-
-
-# @admin.register(Event)
-# class ProductModelAdmin(ModelAdmin):
-#     pass
-
-
-@admin.register(Session)
-class ProductModelAdmin(ModelAdmin):
-    pass
-
-
-@admin.register(Order)
-class ProductModelAdmin(ModelAdmin):
-    pass
-
-
-@admin.register(Category)
-class ProductModelAdmin(ModelAdmin):
-    pass
-
-
-@admin.register(PromoCode)
-class ProductModelAdmin(ModelAdmin):
-    pass
-
-
-@admin.register(Courier)
-class ProductModelAdmin(ModelAdmin):
+class CertificatesAdmin(TranslatableAdmin):
     pass

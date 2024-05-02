@@ -1,3 +1,6 @@
+from apps.models import User, Event, Country, City
+from apps.pagination import PageSortNumberPagination
+from apps.serializers import RegisterModelSerializer, EventsModelSerializer, CountryModelSerializer, CityModelSerializer
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 
@@ -9,7 +12,6 @@ from django.core.cache import cache
 from rest_framework.generics import CreateAPIView, ListAPIView, UpdateAPIView, GenericAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
 from apps.utils import send_verification_email
 from django.utils.encoding import smart_str, smart_bytes, force_str, force_bytes, DjangoUnicodeDecodeError
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
@@ -38,6 +40,22 @@ class ConfirmEmailAPIView(APIView):
         email = cache.get(pk)
         User.objects.filter(email=email).update(is_active=True)
         return Response({'message': 'User confirmed email!'})
+
+
+class EventsListAPIView(ListAPIView):
+    queryset = Event.objects.all()
+    serializer_class = EventsModelSerializer
+    pagination_class = PageSortNumberPagination
+
+
+class CountryListAPIView(ListAPIView):
+    queryset = Country.objects.all()
+    serializer_class = CountryModelSerializer
+
+
+class CityListAPIView(ListAPIView):
+    queryset = City.objects.all()
+    serializer_class = CityModelSerializer
 
 
 class VenueListAPIView(ListAPIView):

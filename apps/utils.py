@@ -1,7 +1,6 @@
 
 
 from django.core.validators import RegexValidator
-from django.core.validators import RegexValidator
 
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
@@ -9,9 +8,9 @@ from django.utils.html import strip_tags
 
 
 phone_regex = RegexValidator(regex=r'^\d{9,15}$',
-                             message="Phone number must be entered in the format: '+9981001010'. Up to 15 digits allowed.")
-
-
+                             message="Phone number must be entered in the format: "
+                                     "'+9981001010'. Up to 15 digits allowed."
+                             )
 
 
 def send_verification_email(email: str, _uuid: str):
