@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'mptt',
     'rest_framework_simplejwt',
     'parler',
+    'modeltranslation',
 
 ]
 
@@ -377,6 +378,10 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_RESULT_EXTENDED = True
 
 CACHES = {
     "default": {

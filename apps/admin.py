@@ -12,11 +12,12 @@ admin.site.unregister(Group)
 
 @admin.register(User)
 class CustomUserAdmin(UserAdmin):
-    list_display = ("username", "email", "first_name", "last_name", "is_staff")
+    ordering = ['email']
+    list_display = ("email", "first_name", "last_name", "is_staff")
 
     fieldsets = (
-        (None, {"fields": ("username", "password")}),
-        (_("Personal info"), {"fields": ("first_name", "last_name", "email")}),
+        (None, {"fields": ("phone", "password")}),
+        (_("Personal info"), {"fields": ("first_name", "last_name")}),
         (
             _("Permissions"),
             {
@@ -34,10 +35,50 @@ class CustomUserAdmin(UserAdmin):
 
 
 @admin.register(City)
-class CertificatesAdmin(TranslatableAdmin):
+class CityAdmin(TranslatableAdmin):
     pass
 
 
 @admin.register(Country)
+class CertificatesAdmin(TranslatableAdmin):
+    pass
+
+
+@admin.register(Location)
+class CertificatesAdmin(TranslatableAdmin):
+    pass
+
+
+@admin.register(Event)
+class CertificatesAdmin(TranslatableAdmin):
+    pass
+
+
+@admin.register(Session)
+class CertificatesAdmin(TranslatableAdmin):
+    pass
+
+
+@admin.register(Order)
+class CertificatesAdmin(TranslatableAdmin):
+    pass
+
+
+@admin.register(Category)
+class CertificatesAdmin(TranslatableAdmin):
+    pass
+
+
+@admin.register(PromoCode)
+class CertificatesAdmin(TranslatableAdmin):
+    pass
+
+
+@admin.register(Promotion)
+class CertificatesAdmin(TranslatableAdmin):
+    pass
+
+
+@admin.register(Courier)
 class CertificatesAdmin(TranslatableAdmin):
     pass

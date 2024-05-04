@@ -1,10 +1,14 @@
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.password_validation import validate_password
 from django.template.defaultfilters import default
+from parler.forms import TranslatedField
+from parler.models import TranslatableModel, TranslatedFields
+from parler_rest.fields import TranslatedFieldsField
+from parler_rest.serializers import TranslatableModelSerializer
 from requests import request
 from rest_framework.exceptions import AuthenticationFailed
 
-from .models import User, Venue
+from .models import User, Venue, Category
 from rest_framework.exceptions import ValidationError
 from rest_framework.fields import CharField, EmailField
 from rest_framework.serializers import ModelSerializer
@@ -27,14 +31,14 @@ class RegisterModelSerializer(ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'email', 'password', 'confirm_password')
+        fields = ('first_name', 'last_name', 'username', 'phone', 'email', 'password', 'confirm_password')
         extra_kwargs = {
             'password': {'write_only': True}
         }
 
     def validate_email(self, value):
         if User.objects.filter(email=value).exists():
-            raise ValidationError('Bu email bazada bor')
+            raise ValidationError('This email  was registered before')
         return value
 
     def validate(self, data):
@@ -46,10 +50,17 @@ class RegisterModelSerializer(ModelSerializer):
         raise ValidationError("Parol mos emas")
 
 
-class EventsModelSerializer(ModelSerializer):
+class EventsModelSerializer(TranslatableModelSerializer):
+    translations = TranslatedFields(shared_model=Event)
+
     class Meta:
         model = Event
-        fields = '__all__'
+        fields = ['title', 'translations']
+
+    def to_representation(self, instance: Event):
+        represent = super().to_representation(instance)
+        represent['city'] = CityModelSerializer(instance.city).data
+        return represent
 
 
 class CountryModelSerializer(ModelSerializer):
@@ -59,12 +70,27 @@ class CountryModelSerializer(ModelSerializer):
 
 
 class UserCreateModelSerializer(ModelSerializer):
+    confirm_password = CharField(write_only=True)
+
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'email', 'password')
+        fields = ('first_name', 'last_name', 'phone', 'email', 'password', 'confirm_password')
         extra_kwargs = {
             'password': {'write_only': True}
         }
+
+    def validate_email(self, value):
+        if User.objects.filter(email=value).exists():
+            raise ValidationError({"email": "This email is already in use."})
+        return value
+
+    def validate(self, data):
+        confirm_password = data.pop('confirm_password')
+        if confirm_password and confirm_password == data['password']:
+            data['password'] = make_password(data['password'])
+            data['is_active'] = False
+            return data
+        raise ValidationError({"passwor": "This password is not same "})
 
     def validate_password(self, password):
         return make_password(password)
@@ -102,19 +128,6 @@ class UpdateUserModelSerializer(ModelSerializer):
         if User.objects.exclude(pk=user.pk).filter(email=value).exists():
             raise serializers.ValidationError({"email": "This email is already in use."})
         return value
-
-    # def update(self, instance, validated_data):
-    #     instance.first_name = validated_data['first_name']
-    #     instance.last_name = validated_data['last_name']
-    #     instance.email = validated_data['email']
-    #     instance.phone = validated_data['phone']
-    #     instance.birthday = validated_data['birthday']
-    #     instance.city = validated_data['city']
-    #     instance.gender = validated_data['gender']
-    #
-    #     instance.save()
-    #
-    #     return instance
 
 
 class ChangePasswordSerializer(serializers.ModelSerializer):

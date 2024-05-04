@@ -30,9 +30,14 @@ make file ishlayotkanda ortada xatolik beradi  sababi  user freginkey bolgan joy
 python manage.py createsuperuser  qilish kerak
 
 
+------------------  difrend language  parler -------
 
 python3 manage.py makemessages -l uz -l en
 python3 manage.py compilemessages --ignore=.venv
+
+
+
+
 
 TASK - 2
 1. apidan keladigan malumot eventni slugi, category malumotlari + slug,
@@ -59,3 +64,15 @@ django-jazzmin (tepada 2ta til chiqish kk, [en, uz] bayrogi) (Shamsiddin)
 
 TASK - 2
 2. change password, reset password(rest api uchun ishlaydigan qilish kk), venues modelsga (slug, long, lat)
+
+
+TASK - 3
+1. (sarvar) - venues detail api, apilarga docs yozish, username ishlatilgan joylarni -> email (token larda)
+2. (javohir) - fixtures larni togrilash
+
+
+
+
+
+docker compose, celery, postgres, redis, minio, domain, ssl, github ci/cd
+

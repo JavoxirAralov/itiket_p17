@@ -1,31 +1,29 @@
-from apps.models import User, Event, Country, City
+from rest_framework.viewsets import ModelViewSet
 
-from apps.serializers import RegisterModelSerializer, EventsModelSerializer, CountryModelSerializer, CityModelSerializer
+from apps.models import User, Event, Country, City
+from apps.serializers import CityModelSerializer, EventsModelSerializer, CountryModelSerializer
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
-
 from apps.models import User, Venue
-
-from apps.serializers import UserCreateModelSerializer, VenueModelSerializer, UpdateUserModelSerializer, \
+from apps.serializers import RegisterModelSerializer, VenueModelSerializer, UpdateUserModelSerializer, \
     ChangePasswordSerializer, ResetPasswordRequestSerializer, SetNewPasswordSerializer
 from django.core.cache import cache
 from rest_framework.generics import CreateAPIView, ListAPIView, UpdateAPIView, GenericAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from apps.utils import send_verification_email
-from django.utils.encoding import smart_str, smart_bytes, force_str, force_bytes, DjangoUnicodeDecodeError
+from django.utils.encoding import smart_bytes, force_str, DjangoUnicodeDecodeError
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
-
 from .utils import Util
 from apps.pagination import PageSortNumberPagination
 
 
 class RegisterCreateAPIView(CreateAPIView):
     queryset = User.objects.all()
-    serializer_class = UserCreateModelSerializer
+    serializer_class = RegisterModelSerializer
 
     def get_success_headers(self, data):
         import uuid
@@ -49,7 +47,7 @@ class EventsListAPIView(ListAPIView):
     pagination_class = PageSortNumberPagination
 
 
-class CountryListAPIView(ListAPIView):
+class CountryViewSet(ModelViewSet):
     queryset = Country.objects.all()
     serializer_class = CountryModelSerializer
 
@@ -86,9 +84,14 @@ class ChangePasswordView(UpdateAPIView):
 
 
 class RequestResetPasswordEmail(GenericAPIView):
+
     serializer_class = ResetPasswordRequestSerializer
 
     def post(self, request):
+        '''
+        ```nimadir yozamiz chiqadi```
+
+        '''
         serializer = self.serializer_class(data=request.data)
         email = request.data['email']
         if User.objects.filter(email=email).exists():

@@ -1,6 +1,4 @@
 loaddata:
-	python manage.py loaddata country
-	python manage.py loaddata city
 	python manage.py loaddata category
 	python manage.py loaddata location
 	python manage.py loaddata venues
@@ -13,6 +11,10 @@ loaddata:
 	python manage.py loaddata order
 	python manage.py loaddata session
 
+
+
+
+
 migrate:
 	python manage.py makemigrations
 	python manage.py migrate
@@ -23,6 +25,8 @@ docker:
 
 
 admin:
+	python manage.py loaddata country
+	python manage.py loaddata city
 	python3 manage.py createsuperuser
 
 run:

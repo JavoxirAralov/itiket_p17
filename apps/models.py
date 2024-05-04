@@ -2,12 +2,12 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.db.models import Model, DateTimeField, CharField, EmailField, ForeignKey, CASCADE, IntegerField, \
     BooleanField, ManyToManyField, PositiveIntegerField, DecimalField
-from django.db.models.fields import DateField
 from django_ckeditor_5.fields import CKEditor5Field
 from django_resized import ResizedImageField
 from parler.models import TranslatableModel, TranslatedFields
 from django.utils.translation import gettext_lazy as _
 
+from apps.managers import CustomUserManager
 from apps.utils import phone_regex
 
 
@@ -31,39 +31,50 @@ class User(AbstractUser):
     city = ForeignKey('City', on_delete=models.CASCADE, blank=True, null=True)
     image = ResizedImageField(size=[200, 200], crop=['middle', 'center'], upload_to='event',
                               default='event/event_default/default.jpg')
+    email = models.EmailField(unique=True)
     phone = CharField(max_length=25, validators=[phone_regex], help_text='+9989***')
     birthday = DateTimeField(null=True, blank=True)
+    username = None
+    objects = CustomUserManager()
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
 
     def __str__(self):
         return self.username
 
     class Meta:
-        verbose_name = 'User'
-        verbose_name_plural = 'Users'
+        verbose_name = _('User')
+        verbose_name_plural = _('Users')
 
 
-class Country(Model):
-    name = CharField(max_length=70, unique=True)
+class Country(TranslatableModel):
+    translations = TranslatedFields(
+        name=CharField(verbose_name=_('name'), max_length=150, unique=True)
+    )
+
     code = CharField(max_length=70)
 
     def __str__(self):
         return self.name
 
     class Meta:
-        verbose_name = 'Country'
-        verbose_name_plural = 'Countries'
+        verbose_name = _('Country')
+        verbose_name_plural = _('Countries')
 
 
-class City(Model):
-    name = CharField(max_length=255)
+class City(TranslatableModel):
+    translations = TranslatedFields(
+        name=CharField(verbose_name=_('name'), max_length=255)
+    )
     country = ForeignKey('Country', CASCADE)
 
     def __str__(self):
         return self.name
 
     class Meta:
-        verbose_name = 'City'
-        verbose_name_plural = 'Cities'
+        verbose_name = _('City')
+        verbose_name_plural = _('Cities')
 
 
 class Event(StartEndBaseModel, TranslatableModel):
@@ -78,6 +89,9 @@ class Event(StartEndBaseModel, TranslatableModel):
     category = ForeignKey('Category', CASCADE)
     slug = CharField(max_length=100)  # add slug  in  fixture
 
+    def __dir__(self):
+        return self.translations
+
     class Meta:
         verbose_name = _('Event')
         verbose_name_plural = _('Events')
@@ -91,12 +105,12 @@ class Promotion(TranslatableModel):
 
     event = ManyToManyField('Event', blank=True, related_name='promotions')
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         verbose_name = _('Promotion')
         verbose_name_plural = _('Promotions')
-
-    def __str__(self):
-        return self.name
 
 
 class Session(StartEndBaseModel, TranslatableModel):
@@ -111,6 +125,10 @@ class Session(StartEndBaseModel, TranslatableModel):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name = _('Session')
+        verbose_name_plural = _('Sessions')
 
 
 class Location(TranslatableModel):
@@ -130,8 +148,8 @@ class Location(TranslatableModel):
         return str(self.index)
 
     class Meta:
-        verbose_name = 'Location'
-        verbose_name_plural = 'Locations'
+        verbose_name = _('Location')
+        verbose_name_plural = _('Locations')
 
 
 class Order(TranslatableModel):
@@ -151,6 +169,10 @@ class Order(TranslatableModel):
     def __str__(self):
         return self.firstname
 
+    class Meta:
+        verbose_name = _('Order')
+        verbose_name_plural = _('Orders')
+
 
 class Category(TranslatableModel):
     translations = TranslatedFields(
@@ -162,14 +184,18 @@ class Category(TranslatableModel):
         return self.name
 
     class Meta:
-        verbose_name = 'Category'
-        verbose_name_plural = 'Categories'
+        verbose_name = _('Category')
+        verbose_name_plural = _('Categories')
 
 
 class Basket(Model):
     event = ForeignKey('Event', CASCADE)
     count = PositiveIntegerField(default=0)
     date = DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = _('Basket')
+        verbose_name_plural = _('Baskets')
 
 
 class Like(TranslatableModel):
@@ -178,6 +204,13 @@ class Like(TranslatableModel):
     )
     like = BooleanField(default=False)
     event = ForeignKey('Event', CASCADE)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = _('Like')
+        verbose_name_plural = _('Likes')
 
 
 class Venue(TranslatableModel):
@@ -200,8 +233,8 @@ class Venue(TranslatableModel):
         return self.title
 
     class Meta:
-        verbose_name = 'Venue'
-        verbose_name_plural = 'Venues'
+        verbose_name = _('Venue')
+        verbose_name_plural = _('Venues')
 
 
 class PromoCode(StartEndBaseModel, TranslatableModel):
@@ -211,6 +244,10 @@ class PromoCode(StartEndBaseModel, TranslatableModel):
 
     def __str__(self):
         return self.promo
+
+    class Meta:
+        verbose_name = _('PromoCode')
+        verbose_name_plural = _('PromoCodes')
 
 
 class Courier(TranslatableModel):
@@ -224,3 +261,10 @@ class Courier(TranslatableModel):
     index = CharField(max_length=100)  # Index number might  be  - AB12345
     country = ForeignKey('Country', CASCADE)
     city = ForeignKey('City', CASCADE)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = _('Courier')
+        verbose_name_plural = _('Couriers')
