@@ -36,6 +36,10 @@ class RegisterCreateAPIView(CreateAPIView):
 
 class ConfirmEmailAPIView(APIView):
     def get(self, request, pk):
+        '''
+                     ```User yaratilyatganda emaildan tasdiqlash```
+
+        '''
         email = cache.get(pk)
         User.objects.filter(email=email).update(is_active=True)
         return Response({'message': 'User confirmed email!'})
@@ -70,6 +74,10 @@ class UserUpdateAPIView(UpdateAPIView):
     http_method_names = ['patch']
 
     def get_object(self):
+        '''
+                ```User malumotlarini  yangilish```
+
+        '''
         return self.request.user
 
 
@@ -78,6 +86,7 @@ class ChangePasswordView(UpdateAPIView):
     permission_classes = (IsAuthenticated,)
     serializer_class = ChangePasswordSerializer
     http_method_names = ['patch']
+
 
     def get_object(self):
         return self.request.user
@@ -89,7 +98,7 @@ class RequestResetPasswordEmail(GenericAPIView):
 
     def post(self, request):
         '''
-        ```nimadir yozamiz chiqadi```
+        ```PASSWORD esdan chiqsa emailga passwordni yangilash uchun habar yuboradi```
 
         '''
         serializer = self.serializer_class(data=request.data)
@@ -111,6 +120,11 @@ class PasswordTokenCheckAPI(GenericAPIView):
     serializer_class = ResetPasswordRequestSerializer
 
     def get(self, request, uidb64, token):
+        '''
+               ```PASSWORD Resent qilish uchun Token Togri  ekanligini tekshirsh```
+
+        '''
+
         try:
             id = force_str(urlsafe_base64_decode(uidb64))
             user = User.objects.get(id=id)
@@ -127,6 +141,20 @@ class SetNewPasswordAPI(GenericAPIView):
     serializer_class = SetNewPasswordSerializer
 
     def patch(self, request):
+        '''
+                     ```Password esdan chiqanda yanglash```
+
+        '''
+
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid()
         return Response({'success': True, 'message': "Your password has been updated!"}, status=status.HTTP_200_OK)
+
+class VenueDetailAPIView(ListAPIView):
+    queryset = Venue.objects.order_by('slug')
+    serializer_class = VenueModelSerializer
+    pagination_class = None
+
+
+
+

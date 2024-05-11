@@ -1,7 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.db.models import Model, DateTimeField, CharField, EmailField, ForeignKey, CASCADE, IntegerField, \
-    BooleanField, ManyToManyField, PositiveIntegerField, DecimalField
+    BooleanField, ManyToManyField, PositiveIntegerField, DecimalField, FloatField, SlugField
 from django_ckeditor_5.fields import CKEditor5Field
 from django_resized import ResizedImageField
 from parler.models import TranslatableModel, TranslatedFields
@@ -38,10 +38,10 @@ class User(AbstractUser):
     objects = CustomUserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['first_name', 'last_name']
 
     def __str__(self):
-        return self.username
+        return self.email
 
     class Meta:
         verbose_name = _('User')
@@ -87,7 +87,8 @@ class Event(StartEndBaseModel, TranslatableModel):
     price = PositiveIntegerField(default=0)
     city = ForeignKey('City', CASCADE)
     category = ForeignKey('Category', CASCADE)
-    slug = CharField(max_length=100)  # add slug  in  fixture
+    slug = SlugField(max_length=100)  # add slug  in  fixture
+    venue = ForeignKey('Venue', CASCADE)  # it changed from venue
 
     def __dir__(self):
         return self.translations
@@ -178,7 +179,7 @@ class Category(TranslatableModel):
     translations = TranslatedFields(
         name=CharField(verbose_name=_('name'), max_length=255),
     )
-    slug = CharField(max_length=100)
+    slug = SlugField(max_length=100, editable=False)
 
     def __str__(self):
         return self.name
@@ -223,11 +224,12 @@ class Venue(TranslatableModel):
     image = ResizedImageField(size=[200, 200], crop=['middle', 'center'], upload_to='venues',
                               default='venues/venues_default/default.jpg')
     # location = ForeignKey('apps.Location', CASCADE)  # TODO: check
-    slug = CharField(max_length=100)
-    lang = CharField(max_length=10)
-    lat = CharField(max_length=10)
+    slug = SlugField(max_length=10, unique=True)
+    lang = FloatField(max_length=10)
+    lat = FloatField(max_length=10)
     phone = CharField(max_length=25, validators=[phone_regex], help_text='+9989***')
-    event = ForeignKey('apps.Event', CASCADE)  # it was chnaged the event and venu ForeginKey, change fixiture also
+
+    # event = ForeignKey('apps.Event', CASCADE)  # it was chnaged the event and venu ForeginKey, change fixiture also
 
     def __str__(self):
         return self.title

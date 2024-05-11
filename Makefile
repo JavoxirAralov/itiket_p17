@@ -11,10 +11,6 @@ loaddata:
 	python manage.py loaddata order
 	python manage.py loaddata session
 
-
-
-
-
 migrate:
 	python manage.py makemigrations
 	python manage.py migrate

@@ -3,60 +3,246 @@
     "model": "apps.venue",
     "pk": 1,
     "fields": {
-      "title": "Xalqlar  dostligi  saroyi",
-      "description": "dadawdawdwadwadwa",
-      "image": "venues/venues_default/default.jpeg",
-      "location": 1,
-      "phone": "+998942400805",
-      "address": "Tashkent"
-    }
+      "translations": {
+        "title": "Venue 1",
+        "description": "Description for Venue 1",
+        "address": "Address 1"
+      },
+      "banner": "venues_banner/venue1.jpg",
+      "image": "venues/venue1.jpg",
+      "slug": "venue-1",
+      "lang": 41.1234,
+      "lat": 45.6789,
+      "phone": "1234567890"}
   },
   {
     "model": "apps.venue",
     "pk": 2,
     "fields": {
-      "title": "durujba ",
-      "description": "dadawdawdwadwadwa",
-      "image": "venues/venues_default/default.jpeg",
-      "location": 1,
-      "phone": "+998942400805",
-      "address": "Tashkent"
-    }
+      "translations": {
+        "title": "Venue 2",
+        "description": "Description for Venue 2",
+        "address": "Address 2"
+      },
+      "banner": "venues_banner/venue2.jpg",
+      "image": "venues/venue2.jpg",
+      "slug": "venue-2",
+      "lang": 41.5678,
+      "lat": 45.9876,
+      "phone": "2345678901"}
   },
   {
     "model": "apps.venue",
     "pk": 3,
     "fields": {
-      "title": "Sirk ",
-      "description": "ajoyib joylar ",
-      "image": "venues/venues_default/default.jpeg",
-      "location": 1,
-      "phone": "+998942400805",
-      "address": "Tashkent"
-    }
+      "translations": {
+        "title": "Venue 3",
+        "description": "Description for Venue 3",
+        "address": "Address 3"
+      },
+      "banner": "venues_banner/venue3.jpg",
+      "image": "venues/venue3.jpg",
+      "slug": "venue-3",
+      "lang": 41.9876,
+      "lat": 45.3456,
+      "phone": "3456789012"}
   },
   {
     "model": "apps.venue",
     "pk": 4,
     "fields": {
-      "title": "Humo arena ",
-      "description": "mazza ",
-      "image": "venues/venues_default/default.jpeg",
-      "location": 1,
-      "phone": "+998942400805",
-      "address": "Tashkent"
-    }
+      "translations": {
+        "title": "Venue 4",
+        "description": "Description for Venue 4",
+        "address": "Address 4"
+      },
+      "banner": "venues_banner/venue4.jpg",
+      "image": "venues/venue4.jpg",
+      "slug": "venue-4",
+      "lang": 42.3456,
+      "lat": 46.1234,
+      "phone": "4567890123"}
   },
   {
     "model": "apps.venue",
     "pk": 5,
     "fields": {
-      "title": "Hmaid olimjon kino teatiri",
-      "description": "daxshat",
-      "image": "venues/venues_default/default.jpeg",
-      "location": 1,
-      "phone": "+998942400805",
-      "address": "Tashkent"
+      "translations": {
+        "title": "Venue 5",
+        "description": "Description for Venue 5",
+        "address": "Address 5"
+      },
+      "banner": "venues_banner/venue5.jpg",
+      "image": "venues/venue5.jpg",
+      "slug": "venue-5",
+      "lang": 42.6789,
+      "lat": 46.5678,
+      "phone": "5678901234"}
+  },
+  {
+    "model": "apps.venue",
+    "pk": 6,
+    "fields": {
+      "translations": {
+        "title": "Venue 6",
+        "description": "Description for Venue 6",
+        "address": "Address 6"
+      },
+      "banner": "venues_banner/venue6.jpg",
+      "image": "venues/venue6.jpg",
+      "slug": "venue-6",
+      "lang": 42.4567,
+      "lat": 46.7890,
+      "phone": "6789012345"}
+  },
+  {
+    "model": "apps.venue",
+    "pk": 7,
+    "fields": {
+      "translations": {
+        "title": "Venue 7",
+        "description": "Description for Venue 7",
+        "address": "Address 7"
+      },
+      "banner": "venues_banner/venue7.jpg",
+      "image": "venues/venue7.jpg",
+      "slug": "venue-7",
+      "lang": 42.1234,
+      "lat": 46.2345,
+      "phone": "7890123456"}
+  },
+  {
+    "model": "apps.venue",
+    "pk": 8,
+    "fields": {
+      "translations": {
+        "title": "Venue 8",
+        "description": "Description for Venue 8",
+        "address": "Address 8"
+      },
+      "banner": "venues_banner/venue8.jpg",
+      "image": "venues/venue8.jpg",
+      "slug": "venue-8",
+      "lang": 42.6789,
+      "lat": 46.3456,
+      "phone": "8901234567"}
+  },
+  {
+    "model": "apps.venue",
+    "pk": 9,
+    "fields": {
+      "translations": {
+        "title": "Venue 9",
+        "description": "Description for Venue 9",
+        "address": "Address 9"
+      },
+      "banner": "venues_banner/venue9.jpg",
+      "image": "venues/venue9.jpg",
+      "slug": "venue-9",
+      "lang": 42.7890,
+      "lat": 46.4567,
+      "phone": "9012345678"}
+  },
+  {
+    "model": "apps.venue",
+    "pk": 10,
+    "fields": {
+      "translations": {
+        "title": "Venue 10",
+        "description": "Description for Venue 10",
+        "address": "Address 10"
+      },
+      "banner": "venues_banner/venue10.jpg",
+      "image": "venues/venue10.jpg",
+      "slug": "venue-10",
+      "lang": 43.1234,
+      "lat": 46.5678,
+      "phone": "0123456789"
+    }
+  },
+  {
+    "model": "apps.venue",
+    "pk": 11,
+    "fields": {
+      "translations": {
+        "title": "Venue 11",
+        "description": "Description for Venue 11",
+        "address": "Address 11"
+      },
+      "banner": "venues_banner/venue11.jpg",
+      "image": "venues/venue11.jpg",
+      "slug": "venue-11",
+      "lang": 43.5678,
+      "lat": 47.1234,
+      "phone": "1123456789"
+    }
+  },
+  {
+    "model": "apps.venue",
+    "pk": 12,
+    "fields": {
+      "translations": {
+        "title": "Venue 12",
+        "description": "Description for Venue 12",
+        "address": "Address 12"
+      },
+      "banner": "venues_banner/venue12.jpg",
+      "image": "venues/venue12.jpg",
+      "slug": "venue-12",
+      "lang": 43.9876,
+      "lat": 47.5678,
+      "phone": "2123456789"
+    }
+  },
+  {
+    "model": "apps.venue",
+    "pk": 13,
+    "fields": {
+      "translations": {
+        "title": "Venue 13",
+        "description": "Description for Venue 13",
+        "address": "Address 13"
+      },
+      "banner": "venues_banner/venue13.jpg",
+      "image": "venues/venue13.jpg",
+      "slug": "venue-13",
+      "lang": 44.1234,
+      "lat": 47.8901,
+      "phone": "3123456789"
+    }
+  },
+  {
+    "model": "apps.venue",
+    "pk": 14,
+    "fields": {
+      "translations": {
+        "title": "Venue 14",
+        "description": "Description for Venue 14",
+        "address": "Address 14"
+      },
+      "banner": "venues_banner/venue14.jpg",
+      "image": "venues/venue14.jpg",
+      "slug": "venue-14",
+      "lang": 44.5678,
+      "lat": 47.6789,
+      "phone": "4123456789"
+    }
+  },
+  {
+    "model": "apps.venue",
+    "pk": 15,
+    "fields": {
+      "translations": {
+        "title": "Venue 15",
+        "description": "Description for Venue 15",
+        "address": "Address 15"
+      },
+      "banner": "venues_banner/venue15.jpg",
+      "image": "venues/venue15.jpg",
+      "slug": "venue-15",
+      "lang": 45.1234,
+      "lat": 48.1234,
+      "phone": "5123456789"
     }
   }
 ]
