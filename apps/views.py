@@ -80,7 +80,6 @@ class UserUpdateAPIView(UpdateAPIView):
         '''
         return self.request.user
 
-
 class ChangePasswordView(UpdateAPIView):
     queryset = User.objects.all()
     permission_classes = (IsAuthenticated,)
