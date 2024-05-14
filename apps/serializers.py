@@ -59,7 +59,7 @@ class EventsModelSerializer(TranslatableModelSerializer):
 
     def to_representation(self, instance: Event):
         represent = super().to_representation(instance)
-        represent['city'] = CityModelSerializer(instance.city).data
+        represent['category'] = EventsModelSerializer(instance.category).data
         return represent
 
 

@@ -5,7 +5,8 @@ from django.contrib.auth.models import Group
 from django.utils.translation import gettext_lazy as _
 from parler.admin import TranslatableAdmin
 
-from apps.models import Location, City, Country, Event, Session, Order, Category, PromoCode, Promotion, Courier, User
+from apps.models import Location, City, Country, Event, Session, Order, Category, PromoCode, Promotion, Courier, User, \
+    Product, Info
 
 admin.site.unregister(Group)
 
@@ -44,6 +45,14 @@ class CertificatesAdmin(TranslatableAdmin):
     pass
 
 
+@admin.register(Product)
+class CityAdmin(ModelAdmin):
+    pass
+
+
+@admin.register(Info)
+class CertificatesAdmin(ModelAdmin):
+    pass
 @admin.register(Location)
 class CertificatesAdmin(TranslatableAdmin):
     pass
@@ -60,7 +69,7 @@ class CertificatesAdmin(TranslatableAdmin):
 
 
 @admin.register(Order)
-class CertificatesAdmin(TranslatableAdmin):
+class CertificatesAdmin(ModelAdmin):
     pass
 
 
@@ -70,7 +79,7 @@ class CertificatesAdmin(TranslatableAdmin):
 
 
 @admin.register(PromoCode)
-class CertificatesAdmin(TranslatableAdmin):
+class CertificatesAdmin(ModelAdmin):
     pass
 
 

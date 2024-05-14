@@ -1,0 +1,38 @@
+[
+  {
+    "model": "apps.sessiontranslation",
+    "pk": 1,
+    "fields": {
+      "language_code": "en",
+      "name": "Registan  suquare",
+      "master": 1
+    }
+  },
+  {
+    "model": "apps.sessiontranslation",
+    "pk": 2,
+    "fields": {
+      "language_code": "uz",
+      "name": "Registan  Maydorni",
+      "master": 1
+    }
+  },
+  {
+    "model": "apps.sessiontranslation",
+    "pk": 3,
+    "fields": {
+      "language_code": "en",
+      "name": "consert",
+      "master": 2
+    }
+  },
+  {
+    "model": "apps.sessiontranslation",
+    "pk": 4,
+    "fields": {
+      "language_code": "uz",
+      "name": "kansert",
+      "master": 2
+    }
+  }
+]

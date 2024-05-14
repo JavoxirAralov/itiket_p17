@@ -1,0 +1,46 @@
+[
+  {
+    "model": "apps.couriertranslation",
+    "pk": 1,
+    "fields": {
+      "language_code": "en",
+      "title": "Benom consert",
+      "description": "<p>there will &nbsp;be one of the best consert &nbsp;ever&nbsp;</p>",
+      "street": "bektemir tuman  mahalla spartak ",
+      "master": 1
+    }
+  },
+  {
+    "model": "apps.couriertranslation",
+    "pk": 2,
+    "fields": {
+      "language_code": "uz",
+      "title": "Benom consert",
+      "description": "<p>zor kansert &nbsp;boladi</p>",
+      "street": "bektemir tuman  mahalla spartak ",
+      "master": 1
+    }
+  },
+  {
+    "model": "apps.couriertranslation",
+    "pk": 3,
+    "fields": {
+      "language_code": "en",
+      "title": "Benom consert",
+      "description": "<p>Shakhriyor &nbsp;consert &nbsp;programming&nbsp;</p>",
+      "street": "bektemir tuman  mahalla spartak ",
+      "master": 2
+    }
+  },
+  {
+    "model": "apps.couriertranslation",
+    "pk": 4,
+    "fields": {
+      "language_code": "uz",
+      "title": "Benom consert",
+      "description": "<p>Shakhriyor &nbsp;consert &nbsp;programming&nbsp;</p>",
+      "street": "bektemir tuman  mahalla spartak ",
+      "master": 2
+    }
+  }
+]

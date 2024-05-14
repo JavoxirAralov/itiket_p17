@@ -3,10 +3,9 @@
     "model": "apps.session",
     "pk": 1,
     "fields": {
-      "name": "Ajoyib",
       "price": 233234,
       "event": 1,
-      "order": 5,
+      "order": 1,
       "start_date": "2024-03-01T09:00:00Z",
       "end_date": "2024-03-10T18:30:00Z"
     }
@@ -15,10 +14,9 @@
     "model": "apps.session",
     "pk": 2,
     "fields": {
-      "name": "Daxshat",
       "price": 233234,
       "event": 2,
-      "order": 4,
+      "order": 2,
       "start_date": "2024-03-01T09:00:00Z",
       "end_date": "2024-03-10T18:30:00Z"
     }
@@ -27,9 +25,8 @@
     "model": "apps.session",
     "pk": 3,
     "fields": {
-      "name": "Daxshat",
       "price": 233234,
-      "event": 3,
+      "event": 2,
       "order": 3,
       "start_date": "2024-03-01T09:00:00Z",
       "end_date": "2024-03-10T18:30:00Z"
@@ -39,7 +36,6 @@
     "model": "apps.session",
     "pk": 4,
     "fields": {
-      "name": "zor",
       "price": 233234,
       "event": 1,
       "order": 2,
@@ -51,7 +47,7 @@
     "model": "apps.session",
     "pk": 5,
     "fields": {
-      "name": "best",
+
       "price": 233234,
       "event": 2,
       "order": 1,
