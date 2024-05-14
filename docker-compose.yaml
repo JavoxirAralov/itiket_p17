@@ -2,47 +2,100 @@ version: '3.8'
 
 services:
   backend_service:
-    build: .
-    env_file: .env
-    depends_on:
-      - postgres_service
-    ports:
-      - '8000:8000'
-
-  postgres_service:
-    image: postgres:alpine
-    ports:
-      - '5433:5432'
-    env_file: .env
-    volumes:
-      - pg_data_service:/var/lib/postgresql/data
-
-
-  flower:
     build:
       context: .
       dockerfile: ./compose/django/Dockerfile
-    command: /start-flower
+    env_file: .env
+    command: /start-django
+    ports:
+      - 8000:${BACKEND_PORT}
     volumes:
       - .:/app
-    ports:
-      - 5557:5555
+      - media_volume:/app/media
+      - static_volume:/app/static
     depends_on:
-      - redis
-      - postgres
+      - postgres_service
+      - redis_service
 
-
-  minio_service:
-    image: minio/minio
-    container_name: minio_container
-    ports:
-      - '9000:9000'
-      - '9001:9001'
+  postgres_service:
+    image: postgres:alpine
+    environment:
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
     volumes:
-      - minio_storage:/data
-    env_file: .env
-    command: server --console-address ":9001" /data
+      - pg_data_service:/var/lib/postgresql/data
 
+  redis_service:
+    image: 'redis/redis-stack:latest'
+    volumes:
+      - redis_data_service:/data
+
+  celery_worker:
+    build:
+      context: .
+      dockerfile: ./compose/django/Dockerfile
+    env_file: .env
+    volumes:
+      - .:/app
+      - media_volume:/app/media
+      - static_volume:/app/static
+    command: /start-celeryworker
+    depends_on:
+      - redis_service
+      - postgres_service
+
+  celery_beat:
+    build:
+      context: .
+      dockerfile: ./compose/django/Dockerfile
+    env_file: .env
+    volumes:
+      - .:/app
+      - media_volume:/app/media
+      - static_volume:/app/static
+    command: /start-celerybeat
+    depends_on:
+      - redis_service
+      - postgres_service
+
+  flower_service:
+    build:
+      context: .
+      dockerfile: ./compose/django/Dockerfile
+    env_file: .env
+    volumes:
+      - .:/app
+      - media_volume:/app/media
+      - static_volume:/app/static
+    ports:
+      - ${FLOWER_PORT}:${FLOWER_PORT}
+    command: /start-flower
+    depends_on:
+      - redis_service
+      - postgres_service
+
+
+#  minio_service:
+#    image: minio/minio
+#    container_name: minio_container
+#    ports:
+#      - '9000:9000'
+#      - '9001:9001'
+#    volumes:
+#      - minio_storage:/data
+#    env_file: .env
+#    command: server --console-address ":9001" /data
+# rabbitmq:
+#    image: rabbitmq:management
+#    container_name: rabbitmq
+#    environment:
+#      - RABBITMQ_DEFAULT_USER=guest
+#      - RABBITMQ_DEFAULT_PASS=guest
+#    ports:
+#      - '5672:5672'
+#      - '15672:15672'
 volumes:
+  static_volume:
+  media_volume:
   minio_storage:
   pg_data_service:
+  redis_data_service:

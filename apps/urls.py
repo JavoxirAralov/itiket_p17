@@ -9,9 +9,7 @@ from rest_framework_simplejwt.views import (
 from apps.views import EventsListAPIView, CityListAPIView, CountryViewSet, ConfirmEmailAPIView
 
 from apps.views import RegisterCreateAPIView, VenueListAPIView, UserUpdateAPIView, \
-    ChangePasswordView, RequestResetPasswordEmail, PasswordTokenCheckAPI, SetNewPasswordAPI
-
-
+    ChangePasswordView, RequestResetPasswordEmail, PasswordTokenCheckAPI, SetNewPasswordAPI, VenueDetailAPIView
 
 urlpatterns = [
     path('token', TokenObtainPairView.as_view(), name='token_obtain_pair'),
@@ -21,6 +19,7 @@ urlpatterns = [
     path('cities', CityListAPIView.as_view(), name='city_list'),
     path('confirm-email/<uuid:pk>/', ConfirmEmailAPIView.as_view(), name='register'),
     path('venues/', VenueListAPIView.as_view(), name='venues'),
+    path('venues/<str:slug>/', VenueDetailAPIView.as_view(), name='venue'),
     path('profile-update/', UserUpdateAPIView.as_view(), name='profile_update'),
     path('password/', ChangePasswordView.as_view(), name='change_password'),
     path('request-reset-email/', RequestResetPasswordEmail.as_view(), name='request_reset_email'),

@@ -1,3 +1,8 @@
+from parler.models import TranslatableModel, TranslatedFields
+
+from apps.models import CreatedBaseModel
+
+
 class Task(CreatedBaseModel, TranslatableModel):
     translations = TranslatedFields(
         title=CharField(_('title'), max_length=255),

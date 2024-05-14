@@ -38,7 +38,7 @@ class User(AbstractUser):
     objects = CustomUserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['first_name', 'last_name']
 
     class Meta:
         verbose_name = _('User')
@@ -104,7 +104,7 @@ class Promotion(Model):
 
 class Session(StartEndBaseModel, TranslatableModel):
     translations = TranslatedFields(
-        name=CharField(verbose_name=_('name'), max_length=100)
+        name=CharField(verbose_name=_('name'), max_length=100),
 
     )
 
@@ -244,26 +244,3 @@ class Courier(Model):
     class Meta:
         verbose_name = _('Courier')
         verbose_name_plural = _('Couriers')
-
-
-class Product(Model):
-    name = CharField(max_length=255)
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = ('Courier')
-        verbose_name_plural = ('Couriers')
-
-
-class Info(Model):
-    name = CharField(max_length=255)
-    product = ManyToManyField('Product', related_name='pruduct')
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = ('Courier')
-        verbose_name_plural = ('Couriers')

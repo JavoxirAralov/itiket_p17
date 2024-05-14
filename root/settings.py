@@ -21,15 +21,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.apps.AppsConfig',
+    'parler',
     'django_ckeditor_5',
     'rest_framework',
     'drf_yasg',
     'django_filters',
     'mptt',
+    'django_celery_results',
     'rest_framework_simplejwt',
-    'parler',
-    'modeltranslation',
-
 ]
 
 MIDDLEWARE = [
@@ -48,8 +47,7 @@ ROOT_URLCONF = 'root.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -69,7 +67,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': os.getenv('DB_NAME'),
         'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
         'HOST': os.getenv('DB_HOST'),
         'PORT': os.getenv('DB_PORT')
     }
@@ -336,10 +334,10 @@ CKEDITOR_5_CONFIGS = {
 
 # DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 
-AWS_ACCESS_KEY_ID = os.getenv('MINIO_ACCESS_KEY')  # MINIO_ACCESS_KEY
-AWS_SECRET_ACCESS_KEY = os.getenv('MINIO_SECRET_KEY')  # MINIO_SECRET_KEY
-AWS_STORAGE_BUCKET_NAME = 'media'  # MINIO_BUCKET_NAME
-AWS_S3_ENDPOINT_URL = os.getenv('MINIO_ENDPOINT')  # MINIO_ENDPOINT
+# AWS_ACCESS_KEY_ID = os.getenv('MINIO_ACCESS_KEY')  # MINIO_ACCESS_KEY
+# AWS_SECRET_ACCESS_KEY = os.getenv('MINIO_SECRET_KEY')  # MINIO_SECRET_KEY
+# AWS_STORAGE_BUCKET_NAME = 'media'  # MINIO_BUCKET_NAME
+# AWS_S3_ENDPOINT_URL = os.getenv('MINIO_ENDPOINT')  # MINIO_ENDPOINT
 
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': (
@@ -379,9 +377,9 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 
-CELERY_BROKER_URL = 'redis://localhost:6379/0'
-CELERY_RESULT_BACKEND = 'django-db'
-CELERY_RESULT_EXTENDED = True
+CELERY_BROKER_URL = os.getenv("CELERY_BROKER_URL", 'redis://redis:6379/0')
+CELERY_RESULT_BACKEND = os.getenv("CELERY_RESULT_BACKEND")
+CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
 
 CACHES = {
     "default": {
@@ -391,3 +389,13 @@ CACHES = {
         "TIMEOUT": 60 * 60 * 24 * 7,  # in seconds: 60 (1 minute)
     }
 }
+
+AWS_ACCESS_KEY_ID = ''
+AWS_SECRET_ACCESS_KEY = ''
+AWS_STORAGE_BUCKET_NAME = 'bucket'
+
+AWS_S3_ENDPOINT_URL = 'http://localhost:9000'
+
+AWS_AUTO_CREATE_BUCKET = True
+AWS_S3_FILE_OVERWRITE = True
+AWS_S3_USE_SSL = False

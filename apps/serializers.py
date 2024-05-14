@@ -194,4 +194,4 @@ class SetNewPasswordSerializer(serializers.Serializer):
         except Exception as e:
             raise AuthenticationFailed({'message': 'Token expired'}, )
         return super().validate(attrs)
-#
+

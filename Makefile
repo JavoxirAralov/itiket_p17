@@ -21,12 +21,9 @@ loaddata:
 
 
 
-make product :
-	python manage.py loaddata product
-	python manage.py loaddata producttranslation
 
 
-mig:
+migrate:
 	python manage.py makemigrations
 	python manage.py migrate
 docker:
