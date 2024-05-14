@@ -1,0 +1,212 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-14 17:26+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps/admin.py:21
+msgid "Personal info"
+msgstr "Shaxsiy malumotlar"
+
+#: apps/admin.py:23
+msgid "Permissions"
+msgstr "Ruxsatlar"
+
+#: apps/admin.py:34
+msgid "Important dates"
+msgstr "Muhim sanalar"
+
+#: apps/models.py:44
+msgid "User"
+msgstr "Foydalanuvchi"
+
+#: apps/models.py:45
+msgid "Users"
+msgstr "Foydalanuvchilar"
+
+#: apps/models.py:56
+msgid "Country"
+msgstr "Mamlakat"
+
+#: apps/models.py:57
+msgid "Countries"
+msgstr "Mamlakatlar"
+
+#: apps/models.py:68
+msgid "City"
+msgstr "Shahar"
+
+#: apps/models.py:69
+msgid "Cities"
+msgstr "Shaxarlar"
+
+#: apps/models.py:74 apps/models.py:125 apps/models.py:202 apps/tests.py:4
+msgid "description"
+msgstr "tavsifi"
+
+#: apps/models.py:75 apps/models.py:201 apps/tests.py:3
+msgid "title"
+msgstr "sarlavha"
+
+#: apps/models.py:89
+msgid "Event"
+msgstr "Tadbir"
+
+#: apps/models.py:90
+msgid "Events"
+msgstr "Tadbirlar"
+
+#: apps/models.py:101
+msgid "Promotion"
+msgstr "Rag'batlantirish"
+
+#: apps/models.py:102
+msgid "Promotions"
+msgstr "Rag'batlantirishlar"
+
+#: apps/models.py:107 apps/models.py:164
+msgid "name"
+msgstr "isim"
+
+#: apps/models.py:119
+msgid "Session"
+msgstr "Sessiya"
+
+#: apps/models.py:120
+msgid "Sessions"
+msgstr "Sessiyalar"
+
+#: apps/models.py:139
+msgid "Location"
+msgstr "Manzil"
+
+#: apps/models.py:140
+msgid "Locations"
+msgstr "Manzilar"
+
+#: apps/models.py:158
+msgid "Order"
+msgstr "Buyurtma"
+
+#: apps/models.py:159
+msgid "Orders"
+msgstr "Buyurtmalar"
+
+#: apps/models.py:172
+msgid "Category"
+msgstr "Turkum"
+
+#: apps/models.py:173
+msgid "Categories"
+msgstr "Turkumlar"
+
+#: apps/models.py:182
+msgid "Basket"
+msgstr "Savat"
+
+#: apps/models.py:183
+msgid "Baskets"
+msgstr "Savatlar"
+
+#: apps/models.py:195
+msgid "Favorite"
+msgstr "fff"
+
+#: apps/models.py:196
+msgid "Favorites"
+msgstr "ffff"
+
+#: apps/models.py:203
+msgid "address"
+msgstr "manzil"
+
+#: apps/models.py:219
+msgid "Venue"
+msgstr "Joy"
+
+#: apps/models.py:220
+msgid "Venues"
+msgstr "Joytlar"
+
+#: apps/models.py:224
+msgid "promo"
+msgstr "promo"
+
+#: apps/models.py:230
+#, fuzzy
+#| msgid "Promotion"
+msgid "PromoCode"
+msgstr "PromoCod"
+
+#: apps/models.py:231
+#, fuzzy
+#| msgid "Promotion"
+msgid "PromoCodes"
+msgstr "PromoCodlar"
+
+#: apps/models.py:237
+msgid "street"
+msgstr "ko'cha"
+
+#: apps/models.py:249
+msgid "Courier"
+msgstr "Kuryer"
+
+#: apps/models.py:250
+msgid "Couriers"
+msgstr "Kuryerlar"
+
+#: apps/tests.py:5
+msgid "status"
+msgstr "holat"
+
+#: apps/tests.py:6
+msgid "user_task_list"
+msgstr ""
+
+#: apps/tests.py:17 apps/tests.py:18
+msgid "Task"
+msgstr "Vazifa"
+
+#: root/settings.py:96
+msgid "English"
+msgstr "Ingilizcha"
+
+#: root/settings.py:97
+msgid "Uzbek"
+msgstr "Uzbekcha"
+
+#~ msgid "Like"
+#~ msgstr "Sevimli"
+
+#~ msgid "Likes"
+#~ msgstr "Sevimlilar"
+
+#, fuzzy
+#~| msgid "Location"
+#~ msgid "Information"
+#~ msgstr "Malumot"
+
+#, fuzzy
+#~| msgid "Location"
+#~ msgid "Information plural"
+#~ msgstr "Malumot"
+
+#, fuzzy
+#~| msgid "Locations"
+#~ msgid "Informations"
+#~ msgstr "Malumotlar"
