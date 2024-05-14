@@ -54,3 +54,9 @@ minio:
 lagnuage:
 	python3 manage.py makemessages -l uz -l en
 	python3 manage.py compilemessages --ignore=.venv
+
+
+
+
+
+
