@@ -1,11 +1,11 @@
 [
   {
-    "model": "apps.Courier",
+    "model": "apps.courier",
     "pk": 1,
     "fields": {
-      "title": "ajoyib",
-      "description": "ajoyib musiqalar bilan siz hardohiym buz bilan  olamida boling ",
-      "street": "majnuntol-5",
+      "title": "zor",
+      "description": "yaxwi",
+      "street": "14a",
       "building": "dom 5 etaj",
       "house_number": "a-34",
       "index": "a334523",
@@ -13,13 +13,13 @@
       "country": 3
     }
   },
-    {
-    "model": "apps.Courier",
+  {
+    "model": "apps.courier",
     "pk": 2,
     "fields": {
-      "title": "ajoyib",
-      "description": "ajoyib musiqalar bilan siz hardohiym buz bilan  olamida boling ",
-      "street": "majnuntol-5",
+      "title": "zor",
+      "description": "yaxwi",
+      "street": "14a",
       "building": "dom 6 etaj",
       "house_number": "a-34",
       "index": "a334523",
@@ -27,13 +27,13 @@
       "country": 3
     }
   },
-    {
-    "model": "apps.Courier",
+  {
+    "model": "apps.courier",
     "pk": 3,
     "fields": {
-      "title": "ajoyib",
-      "description": "ajoyib musiqalar bilan siz hardohiym buz bilan  olamida boling ",
-      "street": "majnuntol-5",
+      "title": "zor",
+      "description": "yaxwi",
+      "street": "14a",
       "building": "dom 5 etaj",
       "house_number": "a-34",
       "index": "a334523",
@@ -41,13 +41,13 @@
       "country": 3
     }
   },
-    {
-    "model": "apps.Courier",
+  {
+    "model": "apps.courier",
     "pk": 4,
     "fields": {
-      "title": "ajoyib",
-      "description": "ajoyib musiqalar bilan siz hardohiym buz bilan  olamida boling ",
-      "street": "majnuntol-5",
+      "title": "zor",
+      "description": "yaxwi",
+      "street": "14a",
       "building": "dom 5 etaj",
       "house_number": "a-34",
       "index": "a334523",
@@ -55,13 +55,13 @@
       "country": 3
     }
   },
-    {
-    "model": "apps.Courier",
+  {
+    "model": "apps.courier",
     "pk": 5,
     "fields": {
-      "title": "ajoyib",
-      "description": "ajoyib musiqalar bilan siz hardohiym buz bilan  olamida boling ",
-      "street": "majnuntol-5",
+      "title": "zor",
+      "description": "yaxwi",
+      "street": "14a",
       "building": "dom 5 etaj",
       "house_number": "a-34",
       "index": "a334523",

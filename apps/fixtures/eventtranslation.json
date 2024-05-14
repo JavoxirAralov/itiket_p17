@@ -1,0 +1,42 @@
+[
+  {
+    "model": "apps.eventtranslation",
+    "pk": 1,
+    "fields": {
+      "language_code": "en",
+      "description": "<p>there will &nbsp;be one of the best consert &nbsp;ever&nbsp;</p>",
+      "title": "Benom consert",
+      "master": 1
+    }
+  },
+  {
+    "model": "apps.eventtranslation",
+    "pk": 2,
+    "fields": {
+      "language_code": "uz",
+      "description": "<p>zor kansert &nbsp;boladi</p>",
+      "title": "benom kanserti",
+      "master": 1
+    }
+  },
+  {
+    "model": "apps.eventtranslation",
+    "pk": 3,
+    "fields": {
+      "language_code": "en",
+      "description": "<p>Shakhriyor &nbsp;consert &nbsp;programming&nbsp;</p>",
+      "title": "Shakhriyor konsert",
+      "master": 2
+    }
+  },
+  {
+    "model": "apps.eventtranslation",
+    "pk": 4,
+    "fields": {
+      "language_code": "uz",
+      "description": "<p>Shakhriyor konserti&nbsp;</p>",
+      "title": "shakhriyor konsert  dasturi",
+      "master": 2
+    }
+  }
+]

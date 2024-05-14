@@ -3,22 +3,22 @@
     "model": "apps.location",
     "pk": 1,
     "fields": {
-      "index": 21212,
-      "city": 1,
-      "description": "davlat poytaxt ",
-      "latitude": 40.7128,
-      "longitude": -74.0060
+      "index": 12345,
+      "city": 3,
+      "latitude": "32.000000",
+      "longitude": "23.000000",
+      "is_deleted": "False"
     }
   },
   {
     "model": "apps.location",
     "pk": 2,
     "fields": {
-      "index": 21212,
-      "city": 2,
-      "description": "ajoyib shaxar",
-      "latitude": 51.5074,
-      "longitude": -0.1278
+      "index": 12345,
+      "city": 3,
+      "latitude": "32.000000",
+      "longitude": "23.000000",
+      "is_deleted": "False"
     }
   }
 ]

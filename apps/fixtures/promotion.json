@@ -3,7 +3,7 @@
     "model": "apps.promotion",
     "pk": 1,
     "fields": {
-      "name": "wdqdsdadqwdsa",
+      "name": "Yaxwi",
       "event": [1,2]
     }
   },
@@ -11,32 +11,8 @@
     "model": "apps.promotion",
     "pk": 2,
     "fields": {
-      "name": "wdqdsdadqwds",
-      "event": [1,3]
-    }
-  },
-  {
-    "model": "apps.promotion",
-    "pk": 3,
-    "fields": {
-      "name": "wdqd",
-      "event": [4,1]
-    }
-  },
-  {
-    "model": "apps.promotion",
-    "pk": 4,
-    "fields": {
-      "name": "wddqwdsa",
-      "event": [4,3]
-    }
-  },
-  {
-    "model": "apps.promotion",
-    "pk": 5,
-    "fields": {
-      "name": "qdsdadqwdsa",
-      "event": [5,1]
+      "name": "Yaxwi",
+      "event": [2]
     }
   }
 ]

@@ -1,21 +1,32 @@
 loaddata:
+	python manage.py loaddata country
+	python manage.py loaddata city
 	python manage.py loaddata category
+	python manage.py loaddata categorytranslation
 	python manage.py loaddata location
+	python manage.py loaddata locationtranslation
 	python manage.py loaddata venues
+	python manage.py loaddata venuestranslation
 	python manage.py loaddata event
+	python manage.py loaddata eventtranslation
 	python manage.py loaddata promocode
-	python manage.py loaddata like
+	python manage.py createsuperuser
+	python manage.py loaddata favorite
 	python manage.py loaddata basket
 	python manage.py loaddata courier
 	python manage.py loaddata promotion
 	python manage.py loaddata order
 	python manage.py loaddata session
+	python manage.py loaddata sessiontranslation
 
 
 
+make product :
+	python manage.py loaddata product
+	python manage.py loaddata producttranslation
 
 
-migrate:
+mig:
 	python manage.py makemigrations
 	python manage.py migrate
 docker:
@@ -25,8 +36,6 @@ docker:
 
 
 admin:
-	python manage.py loaddata country
-	python manage.py loaddata city
 	python3 manage.py createsuperuser
 
 run:

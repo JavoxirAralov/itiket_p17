@@ -1,0 +1,46 @@
+[
+  {
+    "model": "apps.venuetranslation",
+    "pk": 1,
+    "fields": {
+      "language_code": "en",
+      "title": "Benom consert",
+      "description": "<p>there will &nbsp;be one of the best consert &nbsp;ever&nbsp;</p>",
+      "address": "Bektemir street",
+      "master": 1
+    }
+  },
+  {
+    "model": "apps.venuetranslation",
+    "pk": 2,
+    "fields": {
+      "language_code": "uz",
+      "title": "Benom consert",
+      "description": "<p>zor kansert &nbsp;boladi</p>",
+      "address": "Bektemir Ko'chasi",
+      "master": 1
+    }
+  },
+  {
+    "model": "apps.venuetranslation",
+    "pk": 3,
+    "fields": {
+      "language_code": "en",
+      "title": "Shakhriyor konsert",
+      "description": "<p>Shakhriyor &nbsp;consert &nbsp;programming&nbsp;</p>",
+      "address": "chorsu street",
+      "master": 2
+    }
+  },
+  {
+    "model": "apps.venuetranslation",
+    "pk": 4,
+    "fields": {
+      "language_code": "uz",
+      "title": "shakhriyor konsert  dasturi",
+      "description": "<p>Shakhriyor konserti&nbsp;</p>",
+      "address": "chaosru kochasi",
+      "master": 2
+    }
+  }
+]

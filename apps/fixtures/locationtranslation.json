@@ -1,0 +1,38 @@
+[
+  {
+    "model": "apps.locationtranslation",
+    "pk": 1,
+    "fields": {
+      "language_code": "en",
+      "description": "<p>there will &nbsp;be one of the best consert &nbsp;ever&nbsp;</p>",
+      "master": 1
+    }
+  },
+  {
+    "model": "apps.locationtranslation",
+    "pk": 2,
+    "fields": {
+      "language_code": "uz",
+      "description": "<p>zor kansert &nbsp;boladi</p>",
+      "master": 1
+    }
+  },
+  {
+    "model": "apps.locationtranslation",
+    "pk": 3,
+    "fields": {
+      "language_code": "en",
+      "description": "<p>Shakhriyor &nbsp;consert &nbsp;programming&nbsp;</p>",
+      "master": 2
+    }
+  },
+  {
+    "model": "apps.locationtranslation",
+    "pk": 4,
+    "fields": {
+      "language_code": "uz",
+      "description": "<p>Shakhriyor konserti&nbsp;</p>",
+      "master": 2
+    }
+  }
+]

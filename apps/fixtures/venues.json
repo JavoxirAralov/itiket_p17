@@ -3,60 +3,24 @@
     "model": "apps.venue",
     "pk": 1,
     "fields": {
-      "title": "Xalqlar  dostligi  saroyi",
-      "description": "dadawdawdwadwadwa",
-      "image": "venues/venues_default/default.jpeg",
-      "location": 1,
-      "phone": "+998942400805",
-      "address": "Tashkent"
+      "banner": "venues/venues_default/default.jpg",
+      "image": "venues/venues_default/default.jpg",
+      "slug": "Halqlardostligi",
+      "latitude": "32.000000",
+      "longitude": "23.000000",
+      "phone": "998942400805"
     }
   },
   {
     "model": "apps.venue",
     "pk": 2,
     "fields": {
-      "title": "durujba ",
-      "description": "dadawdawdwadwadwa",
-      "image": "venues/venues_default/default.jpeg",
-      "location": 1,
-      "phone": "+998942400805",
-      "address": "Tashkent"
-    }
-  },
-  {
-    "model": "apps.venue",
-    "pk": 3,
-    "fields": {
-      "title": "Sirk ",
-      "description": "ajoyib joylar ",
-      "image": "venues/venues_default/default.jpeg",
-      "location": 1,
-      "phone": "+998942400805",
-      "address": "Tashkent"
-    }
-  },
-  {
-    "model": "apps.venue",
-    "pk": 4,
-    "fields": {
-      "title": "Humo arena ",
-      "description": "mazza ",
-      "image": "venues/venues_default/default.jpeg",
-      "location": 1,
-      "phone": "+998942400805",
-      "address": "Tashkent"
-    }
-  },
-  {
-    "model": "apps.venue",
-    "pk": 5,
-    "fields": {
-      "title": "Hmaid olimjon kino teatiri",
-      "description": "daxshat",
-      "image": "venues/venues_default/default.jpeg",
-      "location": 1,
-      "phone": "+998942400805",
-      "address": "Tashkent"
+      "banner": "venues/venues_default/default.jpg",
+      "image": "venues/venues_default/default.jpg",
+      "slug": "Majnuntol",
+      "latitude": "32.000000",
+      "longitude": "23.000000",
+      "phone": "998942400804"
     }
   }
 ]
