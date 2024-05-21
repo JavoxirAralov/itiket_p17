@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'django_filters',
     'mptt',
+    'minio_storage',
     'django_celery_results',
     'rest_framework_simplejwt',
 ]
@@ -332,13 +333,6 @@ CKEDITOR_5_CONFIGS = {
     }
 }
 
-# DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
-
-# AWS_ACCESS_KEY_ID = os.getenv('MINIO_ACCESS_KEY')  # MINIO_ACCESS_KEY
-# AWS_SECRET_ACCESS_KEY = os.getenv('MINIO_SECRET_KEY')  # MINIO_SECRET_KEY
-# AWS_STORAGE_BUCKET_NAME = 'media'  # MINIO_BUCKET_NAME
-# AWS_S3_ENDPOINT_URL = os.getenv('MINIO_ENDPOINT')  # MINIO_ENDPOINT
-
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': (
         'django_filters.rest_framework.DjangoFilterBackend',
@@ -390,12 +384,16 @@ CACHES = {
     }
 }
 
-AWS_ACCESS_KEY_ID = ''
-AWS_SECRET_ACCESS_KEY = ''
-AWS_STORAGE_BUCKET_NAME = 'bucket'
+DEFAULT_FILE_STORAGE = "minio_storage.storage.MinioMediaStorage"
+STATICFILES_STORAGE = "minio_storage.storage.MinioStaticStorage"
 
-AWS_S3_ENDPOINT_URL = 'http://localhost:9000'
+MINIO_STORAGE_ACCESS_KEY = os.getenv("AWS_ACCESS_KEY_ID")
+MINIO_STORAGE_SECRET_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
+MINIO_STORAGE_ENDPOINT = os.getenv("MINIO_ACCESS_URL")
 
-AWS_AUTO_CREATE_BUCKET = True
-AWS_S3_FILE_OVERWRITE = True
-AWS_S3_USE_SSL = False
+MINIO_STORAGE_USE_HTTPS = False
+
+MINIO_STORAGE_MEDIA_BUCKET_NAME = 'media'
+MINIO_STORAGE_AUTO_CREATE_MEDIA_BUCKET = True
+MINIO_STORAGE_STATIC_BUCKET_NAME = 'static'
+MINIO_STORAGE_AUTO_CREATE_STATIC_BUCKET = True

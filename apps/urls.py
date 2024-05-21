@@ -12,11 +12,11 @@ from apps.views import RegisterCreateAPIView, VenueListAPIView, UserUpdateAPIVie
     ChangePasswordView, RequestResetPasswordEmail, PasswordTokenCheckAPI, SetNewPasswordAPI, VenueDetailAPIView
 
 urlpatterns = [
-    path('token', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('token/refresh', TokenRefreshView.as_view(), name='token_refresh'),
-    path('users/sign-up', RegisterCreateAPIView.as_view(), name='register'),
-    path('events', EventsListAPIView.as_view(), name='events'),
-    path('cities', CityListAPIView.as_view(), name='city_list'),
+    path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('users/sign-up/', RegisterCreateAPIView.as_view(), name='register'),
+    path('events/', EventsListAPIView.as_view(), name='events'),
+    path('cities/', CityListAPIView.as_view(), name='city_list'),
     path('confirm-email/<uuid:pk>/', ConfirmEmailAPIView.as_view(), name='register'),
     path('venues/', VenueListAPIView.as_view(), name='venues'),
     path('venues/<str:slug>/', VenueDetailAPIView.as_view(), name='venue'),

@@ -15,7 +15,7 @@ docker compose run backend_service python3 manage.py migrate
 
 docker ichidan database va table yaratish
 
-docker exec -itu postgres 2f psql -c 'create database drf_db';
+docker exec -itu postgres 741a207df691 psql -c 'create database iticket_db';
 docker exec -itu postgres 2f psql -d drf_db -c 'create table student();'
 
 MINIO
@@ -74,6 +74,12 @@ add new address location model.
 TASK - 3
 1. (sarvar) - venues detail api, apilarga docs yozish, username ishlatilgan joylarni -> email (token larda)
 2. (javohir) - fixtures larni togrilash
+3. apps dagi modellarni xoxlagan formatda sort qilib chiqarish adminkada
+4. promotion api sini chiqarish
+5. promotion adminkadan qoshish
+
+
+
 
 
 
@@ -83,3 +89,4 @@ docker compose, celery, postgres, redis, minio, domain, ssl, github ci/cd
 
 resent-password uchun html code yozish
 
+p

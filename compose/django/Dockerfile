@@ -1,11 +1,11 @@
-FROM python:3.11-slim-buster
+FROM python:3.11-alpine
 
 ENV PYTHONUNBUFFERED 1
 ENV PYTHONDONTWRITEBYTECODE 1
 
 WORKDIR /app
 COPY . /app
-RUN --mount=type=cache,id=custom-pip,target=/root/.cache/pip pip install -r /app/requirements.txt && pip install gunicorn
+RUN --mount=type=cache,id=custom-pip,target=/root/.cache/pip pip install -r /app/requirements.txt
 
 COPY ./compose/django/start /start-django
 RUN sed -i 's/\r$//g' /start-django
