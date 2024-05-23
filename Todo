@@ -82,12 +82,8 @@ TASK - 3
 
 
 
+github cicd
+minio docker compose
+https://github.com/theriverman/django-minio-backend/blob/master/docker-compose.yml
+https://stackoverflow.com/questions/56970874/with-docker-compose-how-do-i-access-a-service-internally-and-externally-using-t
 
-
-
-
-docker compose, celery, postgres, redis, minio, domain, ssl, github ci/cd
-
-resent-password uchun html code yozish
-
-p

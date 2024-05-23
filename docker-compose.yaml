@@ -16,6 +16,8 @@ services:
     depends_on:
       - postgres_service
       - redis_service
+      - minio_service
+      - rabbitmq_service
 
   postgres_service:
     image: postgres:alpine
@@ -79,34 +81,54 @@ services:
 
   minio_service:
     image: minio/minio
-    container_name: minio_container
     ports:
       - '9000:9000'
       - '9001:9001'
     volumes:
       - minio_storage:/data
     env_file: .env
-    command: server --console-address ":9001" /data
-
-#  minio_service:
-#    image: minio/minio
-#    container_name: minio_container
-#    ports:
-#      - '9000:9000'
-#      - '9001:9001'
-#    volumes:
-#      - minio_storage:/data
-#    env_file: .env
 #    command: server --console-address ":9001" /data
-# rabbitmq:
-#    image: rabbitmq:management
-#    container_name: rabbitmq
-#    environment:
-#      - RABBITMQ_DEFAULT_USER=guest
-#      - RABBITMQ_DEFAULT_PASS=guest
-#    ports:
-#      - '5672:5672'
-#      - '15672:15672'
+    command: server --console-address ":9001" http://minio1/data
+
+  createbuckets:
+    image: minio/mc
+    depends_on:
+      - minio_service
+    entrypoint: >
+      sh -c "
+      apk add nc &&
+      while ! nc -z minio_service 9000; do echo 'Wait minio to startup...' && sleep 0.1; done; sleep 5 &&
+      /usr/bin/mc config host add myminio http://minio:9000 access-key secret-key;
+      /usr/bin/mc mb myminio/my-local-bucket;
+      /usr/bin/mc policy download myminio/my-local-bucket;
+      exit 0;
+      " 
+
+  rabbitmq_service:
+    image: rabbitmq:management
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASS}
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+
+  nginx:
+    build:
+      context: .
+      dockerfile: ./compose/nginx/Dockerfile
+    ports:
+      - '80:80'
+      - '443:443'
+    depends_on:
+      - backend_service
+    logging:
+      options:
+        max-size: '10m'
+        max-file: '3'
+    volumes:
+      - static_volume:/app/static
+      - media_volume:/app/media
 
 volumes:
   static_volume:
