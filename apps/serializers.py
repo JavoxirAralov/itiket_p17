@@ -8,7 +8,7 @@ from parler_rest.serializers import TranslatableModelSerializer
 from requests import request
 from rest_framework.exceptions import AuthenticationFailed
 
-from .models import User, Venue, Category
+from .models import User, Venue, Category, Promotion
 from rest_framework.exceptions import ValidationError
 from rest_framework.fields import CharField, EmailField
 from rest_framework.serializers import ModelSerializer

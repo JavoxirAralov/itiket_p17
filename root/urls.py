@@ -1,11 +1,21 @@
 from django.contrib import admin
 from django.urls import include, path
+from drf_yasg.generators import OpenAPISchemaGenerator
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from root.settings import MEDIA_URL, MEDIA_ROOT, STATIC_URL, STATIC_ROOT
 from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
+
+
+class BothHttpAndHttpsSchemaGenerator(OpenAPISchemaGenerator):
+    def get_schema(self, request=None, public=False):
+        schema = super().get_schema(request, public)
+        schema.schemes = ["http", "https"]
+        return schema
+
+
 schema_view = get_schema_view(
     openapi.Info(
         title="Iticket",
@@ -15,6 +25,7 @@ schema_view = get_schema_view(
         contact=openapi.Contact(email="contact@snippets.local"),
         license=openapi.License(name="BSD License"),
     ),
+    generator_class=BothHttpAndHttpsSchemaGenerator,  # Here
     public=True,
     permission_classes=[permissions.AllowAny],
 )
