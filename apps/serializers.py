@@ -195,3 +195,9 @@ class SetNewPasswordSerializer(serializers.Serializer):
             raise AuthenticationFailed({'message': 'Token expired'}, )
         return super().validate(attrs)
 
+
+class PromationModelSerializer(ModelSerializer):
+    class Meta:
+        model = Venue
+        fields = '__all__'
+

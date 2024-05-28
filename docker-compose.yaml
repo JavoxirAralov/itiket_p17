@@ -13,105 +13,92 @@ services:
       - .:/app
       - media_volume:/app/media
       - static_volume:/app/static
-    depends_on:
-      - postgres_service
-      - redis_service
-      - minio_service
-      - rabbitmq_service
+#    depends_on:
+#      - postgres_service
+#      - redis_service
+#      - minio_service
+#      - rabbitmq_service
 
-  postgres_service:
-    image: postgres:alpine
-    environment:
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
-    ports:
-      - '5432:5432'
-    volumes:
-      - pg_data_service:/var/lib/postgresql/data
-
-  redis_service:
-    image: redis:alpine
-    ports:
-      - '6379:6379'
-    volumes:
-      - redis_data_service:/data
-
-  celery_worker:
-    build:
-      context: .
-      dockerfile: ./compose/django/Dockerfile
-    env_file: .env
-    volumes:
-      - .:/app
-      - media_volume:/app/media
-      - static_volume:/app/static
-    command: /start-celeryworker
-    depends_on:
-      - redis_service
-      - postgres_service
-
-  celery_beat:
-    build:
-      context: .
-      dockerfile: ./compose/django/Dockerfile
-    env_file: .env
-    volumes:
-      - .:/app
-      - media_volume:/app/media
-      - static_volume:/app/static
-    command: /start-celerybeat
-    depends_on:
-      - redis_service
-      - postgres_service
-
-  flower_service:
-    build:
-      context: .
-      dockerfile: ./compose/django/Dockerfile
-    env_file: .env
-    volumes:
-      - .:/app
-      - media_volume:/app/media
-      - static_volume:/app/static
-    ports:
-      - ${FLOWER_PORT}:${FLOWER_PORT}
-    command: /start-flower
-    depends_on:
-      - redis_service
-      - postgres_service
+#  postgres_service:
+#    image: postgres:alpine
+#    environment:
+#      - POSTGRES_PASSWORD=${DB_PASSWORD}
+#    ports:
+#      - '5432:5432'
+#    volumes:
+#      - pg_data_service:/var/lib/postgresql/data
+#
+#  redis_service:
+#    image: redis:alpine
+#    ports:
+#      - '6379:6379'
+#    volumes:
+#      - redis_data_service:/data
+#
+#  celery_worker:
+#    build:
+#      context: .
+#      dockerfile: ./compose/django/Dockerfile
+#    env_file: .env
+#    volumes:
+#      - .:/app
+#      - media_volume:/app/media
+#      - static_volume:/app/static
+#    command: /start-celeryworker
+#    depends_on:
+#      - redis_service
+#      - postgres_service
+#
+#  celery_beat:
+#    build:
+#      context: .
+#      dockerfile: ./compose/django/Dockerfile
+#    env_file: .env
+#    volumes:
+#      - .:/app
+#      - media_volume:/app/media
+#      - static_volume:/app/static
+#    command: /start-celerybeat
+#    depends_on:
+#      - redis_service
+#      - postgres_service
+#
+#  flower_service:
+#    build:
+#      context: .
+#      dockerfile: ./compose/django/Dockerfile
+#    env_file: .env
+#    volumes:
+#      - .:/app
+#      - media_volume:/app/media
+#      - static_volume:/app/static
+#    ports:
+#      - ${FLOWER_PORT}:${FLOWER_PORT}
+#    command: /start-flower
+#    depends_on:
+#      - redis_service
+#      - postgres_service
 
   minio_service:
     image: minio/minio
+    container_name: minio_container
     ports:
       - '9000:9000'
       - '9001:9001'
     volumes:
       - minio_storage:/data
     env_file: .env
-#    command: server --console-address ":9001" /data
-    command: server --console-address ":9001" http://minio1/data
+    command: server --console-address ":9001" /data
 
-  createbuckets:
-    image: minio/mc
-    depends_on:
-      - minio_service
-    entrypoint: >
-      sh -c "
-      apk add nc &&
-      while ! nc -z minio_service 9000; do echo 'Wait minio to startup...' && sleep 0.1; done; sleep 5 &&
-      /usr/bin/mc config host add myminio http://minio:9000 access-key secret-key;
-      /usr/bin/mc mb myminio/my-local-bucket;
-      /usr/bin/mc policy download myminio/my-local-bucket;
-      exit 0;
-      " 
 
-  rabbitmq_service:
-    image: rabbitmq:management
-    environment:
-      - RABBITMQ_DEFAULT_USER=${RABBITMQ_USER}
-      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASS}
-    ports:
-      - '5672:5672'
-      - '15672:15672'
+#  rabbitmq_service:
+#    image: rabbitmq:management
+#    environment:
+#      - RABBITMQ_DEFAULT_USER=${RABBITMQ_USER}
+#      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASS}
+#    ports:
+#      - '5672:5672'
+#      - '15672:15672'
 
   nginx:
     build:
@@ -134,5 +121,5 @@ volumes:
   static_volume:
   media_volume:
   minio_storage:
-  pg_data_service:
-  redis_data_service:
+#  pg_data_service:
+#  redis_data_service:
