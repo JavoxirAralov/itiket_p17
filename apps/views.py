@@ -1,7 +1,8 @@
 from rest_framework.viewsets import ModelViewSet
 
-from apps.models import User, Event, Country, City
-from apps.serializers import CityModelSerializer, EventsModelSerializer, CountryModelSerializer
+from apps.models import User, Event, Country, City, Promotion
+from apps.serializers import CityModelSerializer, EventsModelSerializer, CountryModelSerializer, \
+    PromotionModelSerializer
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from apps.models import User, Venue
@@ -152,6 +153,12 @@ class SetNewPasswordAPI(GenericAPIView):
 class VenueDetailAPIView(ListAPIView):
     queryset = Venue.objects.order_by('slug')
     serializer_class = VenueModelSerializer
+    pagination_class = None
+
+
+class PromotionListAPIView(ListAPIView):
+    queryset = Promotion.objects.all()
+    serializer_class = PromotionModelSerializer
     pagination_class = None
 
 

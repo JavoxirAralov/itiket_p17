@@ -13,71 +13,71 @@ services:
       - .:/app
       - media_volume:/app/media
       - static_volume:/app/static
-#    depends_on:
-#      - postgres_service
-#      - redis_service
-#      - minio_service
-#      - rabbitmq_service
+    depends_on:
+      - postgres_service
+      - redis_service
+      - minio_service
+      - rabbitmq_service
 
-#  postgres_service:
-#    image: postgres:alpine
-#    environment:
-#      - POSTGRES_PASSWORD=${DB_PASSWORD}
-#    ports:
-#      - '5432:5432'
-#    volumes:
-#      - pg_data_service:/var/lib/postgresql/data
-#
-#  redis_service:
-#    image: redis:alpine
-#    ports:
-#      - '6379:6379'
-#    volumes:
-#      - redis_data_service:/data
-#
-#  celery_worker:
-#    build:
-#      context: .
-#      dockerfile: ./compose/django/Dockerfile
-#    env_file: .env
-#    volumes:
-#      - .:/app
-#      - media_volume:/app/media
-#      - static_volume:/app/static
-#    command: /start-celeryworker
-#    depends_on:
-#      - redis_service
-#      - postgres_service
-#
-#  celery_beat:
-#    build:
-#      context: .
-#      dockerfile: ./compose/django/Dockerfile
-#    env_file: .env
-#    volumes:
-#      - .:/app
-#      - media_volume:/app/media
-#      - static_volume:/app/static
-#    command: /start-celerybeat
-#    depends_on:
-#      - redis_service
-#      - postgres_service
-#
-#  flower_service:
-#    build:
-#      context: .
-#      dockerfile: ./compose/django/Dockerfile
-#    env_file: .env
-#    volumes:
-#      - .:/app
-#      - media_volume:/app/media
-#      - static_volume:/app/static
-#    ports:
-#      - ${FLOWER_PORT}:${FLOWER_PORT}
-#    command: /start-flower
-#    depends_on:
-#      - redis_service
-#      - postgres_service
+  postgres_service:
+    image: postgres:alpine
+    environment:
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    ports:
+      - '5432:5432'
+    volumes:
+      - pg_data_service:/var/lib/postgresql/data
+
+  redis_service:
+    image: redis:alpine
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis_data_service:/data
+
+  celery_worker:
+    build:
+      context: .
+      dockerfile: ./compose/django/Dockerfile
+    env_file: .env
+    volumes:
+      - .:/app
+      - media_volume:/app/media
+      - static_volume:/app/static
+    command: /start-celeryworker
+    depends_on:
+      - redis_service
+      - postgres_service
+
+  celery_beat:
+    build:
+      context: .
+      dockerfile: ./compose/django/Dockerfile
+    env_file: .env
+    volumes:
+      - .:/app
+      - media_volume:/app/media
+      - static_volume:/app/static
+    command: /start-celerybeat
+    depends_on:
+      - redis_service
+      - postgres_service
+
+  flower_service:
+    build:
+      context: .
+      dockerfile: ./compose/django/Dockerfile
+    env_file: .env
+    volumes:
+      - .:/app
+      - media_volume:/app/media
+      - static_volume:/app/static
+    ports:
+      - ${FLOWER_PORT}:${FLOWER_PORT}
+    command: /start-flower
+    depends_on:
+      - redis_service
+      - postgres_service
 
   minio_service:
     image: minio/minio
@@ -91,14 +91,14 @@ services:
     command: server --console-address ":9001" /data
 
 
-#  rabbitmq_service:
-#    image: rabbitmq:management
-#    environment:
-#      - RABBITMQ_DEFAULT_USER=${RABBITMQ_USER}
-#      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASS}
-#    ports:
-#      - '5672:5672'
-#      - '15672:15672'
+  rabbitmq_service:
+    image: rabbitmq:management
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASS}
+    ports:
+      - '5672:5672'
+      - '15672:15672'
 
   nginx:
     build:
@@ -121,5 +121,5 @@ volumes:
   static_volume:
   media_volume:
   minio_storage:
-#  pg_data_service:
-#  redis_data_service:
+  pg_data_service:
+  redis_data_service:

@@ -7,6 +7,7 @@ from parler_rest.fields import TranslatedFieldsField
 from parler_rest.serializers import TranslatableModelSerializer
 from requests import request
 from rest_framework.exceptions import AuthenticationFailed
+from rest_framework.validators import UniqueTogetherValidator
 
 from .models import User, Venue, Category, Promotion
 from rest_framework.exceptions import ValidationError
@@ -51,16 +52,11 @@ class RegisterModelSerializer(ModelSerializer):
 
 
 class EventsModelSerializer(TranslatableModelSerializer):
-    translations = TranslatedFields(shared_model=Event)
+    translations = TranslatedFieldsField(shared_model=Event)
 
     class Meta:
         model = Event
-        fields = ['title', 'translations']
-
-    def to_representation(self, instance: Event):
-        represent = super().to_representation(instance)
-        represent['category'] = EventsModelSerializer(instance.category).data
-        return represent
+        fields = ['price', 'translations', 'city', 'slug', 'banner', 'venue', 'category', 'image_one', 'image_two']
 
 
 class CountryModelSerializer(ModelSerializer):
@@ -196,8 +192,37 @@ class SetNewPasswordSerializer(serializers.Serializer):
         return super().validate(attrs)
 
 
-class PromationModelSerializer(ModelSerializer):
+
+class EventSliderSerializer(TranslatableModelSerializer):
+    translations = TranslatedFieldsField(shared_model=Event)
+
     class Meta:
-        model = Venue
-        fields = '__all__'
+        model = Event
+        fields = ['price', 'translations', 'city', 'slug', 'banner', 'venue', 'category']
+
+
+class EventOtherSerializer(serializers.ModelSerializer):
+    translations = TranslatedFieldsField(shared_model=Event)
+
+    class Meta:
+        model = Event
+        fields = ['price', 'translations', 'city', 'slug', 'venue', 'category', 'image_one', 'image_two']
+
+
+class PromotionModelSerializer(serializers.ModelSerializer):
+    events = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Promotion
+        fields = ['id', 'name', 'events']  # Specify fields explicitly
+
+    def to_representation(self, instance):
+
+        if instance.name == 'Slider':
+            return EventSliderSerializer(many=True).data
+        else:
+            return EventOtherSerializer(many=True).data
+
+
+
 

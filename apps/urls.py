@@ -6,7 +6,7 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 
-from apps.views import EventsListAPIView, CityListAPIView, CountryViewSet, ConfirmEmailAPIView
+from apps.views import EventsListAPIView, CityListAPIView, CountryViewSet, ConfirmEmailAPIView, PromotionListAPIView
 
 from apps.views import RegisterCreateAPIView, VenueListAPIView, UserUpdateAPIView, \
     ChangePasswordView, RequestResetPasswordEmail, PasswordTokenCheckAPI, SetNewPasswordAPI, VenueDetailAPIView
@@ -24,6 +24,7 @@ urlpatterns = [
     path('password/', ChangePasswordView.as_view(), name='change_password'),
     path('request-reset-email/', RequestResetPasswordEmail.as_view(), name='request_reset_email'),
     path('password-resent/<uidb64>/<token>/', PasswordTokenCheckAPI.as_view(), name='password-reset-confirm'),
-    path('password-reset-complete/', SetNewPasswordAPI.as_view(), name='password_reset_complete')
+    path('password-reset-complete/', SetNewPasswordAPI.as_view(), name='password_reset_complete'),
+    path('promotoins/', PromotionListAPIView.as_view(), name='promotions'),
 
 ]

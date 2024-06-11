@@ -3,7 +3,7 @@
     "model": "apps.promotion",
     "pk": 1,
     "fields": {
-      "name": "Yaxwi",
+      "name": "Slider",
       "event": [1,2]
     }
   },
@@ -11,7 +11,7 @@
     "model": "apps.promotion",
     "pk": 2,
     "fields": {
-      "name": "Yaxwi",
+      "name": "Dam Olish kunlafi",
       "event": [2]
     }
   }

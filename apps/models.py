@@ -74,13 +74,18 @@ class Event(StartEndBaseModel, TranslatableModel):
         description=CKEditor5Field(verbose_name=_('description'), blank=True, null=True, config_name='extends'),
         title=CharField(verbose_name=_('title'), max_length=70)
     )
-    image = ResizedImageField(size=[200, 200], crop=['middle', 'center'], upload_to='event',
+    image_one = ResizedImageField(size=[200, 200], crop=['middle', 'center'], upload_to='event',
                               default='event/event_default/default.jpg')
+    image_two = ResizedImageField(size=[200, 200], crop=['middle', 'center'], upload_to='event',
+                                  default='event/event_default/default.jpg')
+    banner = ResizedImageField(size=[1000, 320], crop=['middle', 'center'], upload_to='events_banner',
+                               default='event/event_default/default.jpg')
     price = PositiveIntegerField(default=0)
     city = ForeignKey('City', CASCADE)
     category = ForeignKey('Category', CASCADE)
     slug = SlugField(max_length=100, editable=False)  # add slug  in  fixture
-    venue = ForeignKey('apps.Venue', CASCADE)
+    venue = ForeignKey('Venue', CASCADE)
+
 
     def __dir__(self):
         return self.title

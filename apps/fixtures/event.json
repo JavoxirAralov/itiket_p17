@@ -5,7 +5,8 @@
     "fields": {
       "start_date": "2024-05-07T12:53:28.416Z",
       "end_date": "2024-05-07T12:54:30.008Z",
-      "image": "event/event_default/default.jpg",
+      "image_one": "event/event_default/default.jpg",
+      "image_two": "event/event_default/default.jpg",
       "price": 150000,
       "city": 9,
       "category": 1,
@@ -19,7 +20,8 @@
     "fields": {
       "start_date": "2024-05-07T14:21:46.869Z",
       "end_date": "2024-05-07T14:22:24.478Z",
-      "image": "event/event_default/default.jpg",
+      "image_one": "event/event_default/default.jpg",
+      "image_two": "event/event_default/default.jpg",
       "price": 2000,
       "city": 15,
       "category": 2,
