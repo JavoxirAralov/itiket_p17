@@ -249,3 +249,4 @@ class Courier(Model):
     class Meta:
         verbose_name = _('Courier')
         verbose_name_plural = _('Couriers')
+
